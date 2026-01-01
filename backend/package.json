@@ -1,0 +1,11 @@
+{
+  "name": "mothers-academy-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend API for Mothers International Academy",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
