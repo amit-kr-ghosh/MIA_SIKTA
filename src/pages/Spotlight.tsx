@@ -105,21 +105,21 @@ const Spotlight: React.FC = () => {
       id="spotlight"
       className="relative bg-neutral-950 overflow-hidden px-4 sm:px-6 md:px-16 py-16 sm:py-20"
     >
-      {/* STRONG LIGHT RAYS – MOBILE BOOSTED */}
+      {/* LIGHT RAYS – MOBILE SAFE */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <LightRays
           raysOrigin="top-center"
           raysColor="#ffffff"
-          raysSpeed={isSmallScreen ? 1.1 : 1.4}
-          lightSpread={isSmallScreen ? 0.6 : 0.45}
-          rayLength={isSmallScreen ? 3.2 : 2.5}
+          raysSpeed={1.4}
+          lightSpread={0.65}
+          rayLength={4}
           followMouse={false}
           mouseInfluence={0}
-          noiseAmount={isSmallScreen ? 0.45 : 0.35}
-          distortion={isSmallScreen ? 0.05 : 0.04}
+          noiseAmount={0.35}
+          distortion={0.04}
           className={`w-full h-full ${
             isSmallScreen
-              ? "opacity-90"
+              ? "opacity-100"
               : "opacity-80 mix-blend-screen"
           }`}
         />

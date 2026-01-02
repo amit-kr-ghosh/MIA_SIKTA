@@ -116,7 +116,7 @@ const Home = () => {
             className="flex justify-center"
           >
             <img
-              src="/images/hero.png"
+              src="/images/hero2.gif"
               alt="Happy Students"
               className="
           w-[90%]  sm:w-[90%]
