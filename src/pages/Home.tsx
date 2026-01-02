@@ -116,10 +116,10 @@ const Home = () => {
             className="flex justify-center"
           >
             <img
-              src="/images/hero2.gif"
+              src="/images/hero4.gif"
               alt="Happy Students"
               className="
-          w-[90%]  sm:w-[90%]
+          w-[100%]  sm:w-[100%]
           max-h-[240px] sm:max-h-[520px]
           object-contain
           drop-shadow-2xl
