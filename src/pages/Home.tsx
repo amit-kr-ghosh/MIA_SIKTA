@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Contact from "./Contact.tsx";
+import Spotlight from "./Spotlight.tsx";
 import {
   BookOpen,
   Award,
@@ -202,6 +203,8 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
+      <Spotlight/>
       {/* 🎓 EDUCATION BEYOND ACADEMICS */}
       <section className="py-20 bg-white text-center px-6">
         <h2 className="text-4xl font-extrabold text-gray-900 mb-6">
