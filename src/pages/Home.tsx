@@ -115,7 +115,7 @@ const Home = () => {
 
        {/* ⭐ WHY PARENTS CHOOSE US */}
       <section className="py-12 sm:py-20 px-4">
-        <h2 className="text-center text-2xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-10">
+        <h2 className="text-center text-3xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-10">
           Why Parents Choose Us
         </h2>
 
