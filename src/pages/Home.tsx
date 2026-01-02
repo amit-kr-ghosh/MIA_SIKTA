@@ -134,7 +134,7 @@ const Home = () => {
     text-center
   "
 >
-  🚀 Apply Now
+ Apply Now
 </Link>
 
   </motion.div>
@@ -143,7 +143,7 @@ const Home = () => {
                 to="/about"
                 className="border-2 border-gray-300 px-7 py-3 rounded-2xl font-semibold text-[clamp(0.95rem,2.5vw,1.05rem)]"
               >
-                Learn More ✨
+                Learn More
               </Link>
             </div>
           </motion.div>
@@ -205,7 +205,7 @@ const Home = () => {
       {/* 🌿 CAMPUS LIFE */}
       <section className="py-14 sm:py-20 bg-white px-4">
         <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3 sm:mb-4">
-          🌿 Campus Life @ MIA
+          Campus Life <br /> @ MIA
         </h2>
         <p className="text-center text-sm sm:text-base text-gray-600 mb-8 sm:mb-10 max-w-2xl mx-auto">
           A vibrant campus that nurtures learning, creativity and character.
@@ -248,7 +248,7 @@ const Home = () => {
       {/* 🎓 EDUCATION BEYOND ACADEMICS */}
       <section className="py-20 bg-white text-center px-6">
         <h2 className="text-4xl font-extrabold text-gray-900 mb-6">
-          🎓 Education Beyond Academics
+           Education Beyond Academics
         </h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
           We don’t just teach for exams — we prepare students for LIFE.
@@ -299,7 +299,7 @@ const Home = () => {
       {/* 💬 TESTIMONIALS */}
       <section className="py-20 bg-gradient-to-b from-orange-50 via-white to-yellow-50 px-4">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 text-center mb-4">
-          💬 What Parents Say
+           What Parents Say
         </h2>
         <p className="text-gray-600 text-base sm:text-lg mb-12 max-w-2xl mx-auto text-center">
           Their experience. Their trust. Their words.
