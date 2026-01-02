@@ -1,110 +1,157 @@
-import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import { Link } from "react-router-dom";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+} from "lucide-react";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-white text-lg font-bold mb-4">
-              Mothers International Academy
-            </h3>
-            <p className="text-sm mb-4">
-              Empowering young minds with quality education and values for a
-              brighter future.
+    <footer className="relative bg-gradient-to-b from-gray-900 via-gray-900 to-black text-gray-300 overflow-hidden">
+      {/* subtle glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,180,0,0.12),transparent_60%)]" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+        {/* TOP GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center sm:text-left">
+          
+          {/* BRAND */}
+          <div className="space-y-4 flex flex-col items-center sm:items-start">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-2xl bg-white shadow-lg">
+                <img
+                  src="/images/logo.png"
+                  alt="MIA Logo"
+                  className="h-12 w-12 object-contain"
+                />
+              </div>
+              <h3 className="text-white text-lg sm:text-xl font-extrabold leading-tight">
+                Mothers <br className="sm:hidden" />
+                International Academy
+              </h3>
+            </div>
+
+            <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
+              Empowering young minds with excellence, values, leadership and
+              lifelong learning.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-primary-400 transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="hover:text-primary-400 transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="hover:text-primary-400 transition-colors">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="hover:text-primary-400 transition-colors">
-                <Youtube className="h-5 w-5" />
-              </a>
+
+            <div className="flex gap-3 pt-2 justify-center sm:justify-start">
+              {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
+                <motion.a
+                  key={i}
+                  whileHover={{ scale: 1.15, y: -2 }}
+                  href="#"
+                  className="p-2 rounded-lg bg-white/10 hover:bg-gradient-to-br hover:from-orange-400 hover:to-yellow-400 hover:text-gray-900 transition"
+                >
+                  <Icon className="h-5 w-5" />
+                </motion.a>
+              ))}
             </div>
           </div>
 
+          {/* QUICK LINKS */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-white text-lg font-bold mb-4">
+              Quick Links
+            </h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link to="/about" className="hover:text-primary-400 transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/academics" className="hover:text-primary-400 transition-colors">
-                  Academics
-                </Link>
-              </li>
-              <li>
-                <Link to="/admissions" className="hover:text-primary-400 transition-colors">
-                  Admissions
-                </Link>
-              </li>
-              <li>
-                <Link to="/facilities" className="hover:text-primary-400 transition-colors">
-                  Facilities
-                </Link>
-              </li>
-              <li>
-                <Link to="/achievements" className="hover:text-primary-400 transition-colors">
-                  Achievements
-                </Link>
-              </li>
+              {[
+                { name: "About Us", path: "/about" },
+                { name: "Academics", path: "/academics" },
+                { name: "Admissions", path: "/admissions" },
+                { name: "Facilities", path: "/facilities" },
+                { name: "Achievements", path: "/achievements" },
+              ].map((l) => (
+                <li key={l.path}>
+                  <Link
+                    to={l.path}
+                    className="hover:text-orange-400 transition"
+                  >
+                    {l.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* RESOURCES */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-4">Resources</h4>
+            <h4 className="text-white text-lg font-bold mb-4">
+              Resources
+            </h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link to="/gallery" className="hover:text-primary-400 transition-colors">
-                  Gallery
-                </Link>
-              </li>
-              <li>
-                <Link to="/notices" className="hover:text-primary-400 transition-colors">
-                  Notices
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-primary-400 transition-colors">
-                  Contact Us
-                </Link>
-              </li>
+              {[
+                { name: "Gallery", path: "/gallery" },
+                { name: "Notices", path: "/notices" },
+                { name: "Contact Us", path: "/contact" },
+              ].map((l) => (
+                <li key={l.path}>
+                  <Link
+                    to={l.path}
+                    className="hover:text-orange-400 transition"
+                  >
+                    {l.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-white text-lg font-semibold mb-4">Contact Info</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-primary-400 flex-shrink-0 mt-0.5" />
-                <span>123 Education Street, New Delhi, India</span>
+          {/* CONTACT */}
+          <div className="flex flex-col items-center sm:items-start">
+            <h4 className="text-white text-lg font-bold mb-4">
+              Contact Info
+            </h4>
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-orange-400 mt-0.5" />
+                <span>
+                  Bhawra, Sikta, West Champaran,<br /> Bihar - 845306
+            
+                </span>
               </li>
-              <li className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-primary-400 flex-shrink-0" />
-                <span>+91 98765 43210</span>
+              <li className="flex items-center gap-3">
+                <Phone className="h-5 w-5 text-orange-400" />
+                <span>+91 99390 55737</span>
               </li>
-              <li className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-primary-400 flex-shrink-0" />
-                <span>info@mothersinternational.edu</span>
+              <li className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-orange-400" />
+                <span>mahamahatamyadav@gmail.com</span>
               </li>
             </ul>
+
+            {/* CTA */}
+            <Link
+              to="/admissions"
+              className="
+                inline-block mt-6
+                px-6 py-3
+                rounded-xl font-bold
+                text-gray-900
+                bg-gradient-to-r from-yellow-400 to-orange-500
+                shadow-[0_0_20px_rgba(255,180,0,0.6)]
+                hover:scale-105 transition
+              "
+            >
+              Apply for Admission →
+            </Link>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+        {/* DIVIDER */}
+        <div className="border-t border-white/10 mt-12 pt-6 text-center text-xs sm:text-sm text-gray-400">
           <p>
-            &copy; {new Date().getFullYear()} Mothers International Academy. All
-            rights reserved.
+            © {new Date().getFullYear()} Mothers International Academy. All rights
+            reserved.
+          </p>
+          <p className="mt-1 text-gray-500">
+            Designed with ❤️ for modern education
           </p>
         </div>
       </div>
