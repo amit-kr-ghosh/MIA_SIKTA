@@ -93,12 +93,50 @@ const Home = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <Link
-                to="/admissions"
-                className="px-7 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-2xl font-semibold shadow-lg text-[clamp(0.95rem,2.5vw,1.05rem)]"
-              >
-                🚀 Apply Now
-              </Link>
+              
+<motion.div
+  animate={{ scale: [1, 1.06, 1] }}
+  transition={{
+    duration: 1.8,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  className="relative inline-block"
+>
+  {/* Rounded glow layer */}
+  <span
+    className="
+      absolute inset-0
+      rounded-2xl
+      bg-gradient-to-r from-orange-400 to-yellow-400
+      blur-xl
+      opacity-50
+      -z-10
+    "
+  />
+
+  <motion.div
+    whileHover={{ scale: 1.12, y: -2 }}
+    whileTap={{ scale: 0.96 }}
+  >
+    <Link
+      to="/admissions"
+      className="
+        relative
+        px-7 py-3
+        bg-gradient-to-r from-orange-500 to-yellow-500
+        text-white
+        rounded-2xl
+        font-semibold
+        shadow-lg
+        text-[clamp(0.95rem,2.5vw,1.05rem)]
+        flex items-center gap-2
+      "
+    >
+      🚀 Apply Now
+    </Link>
+  </motion.div>
+</motion.div>
               <Link
                 to="/about"
                 className="border-2 border-gray-300 px-7 py-3 rounded-2xl font-semibold text-[clamp(0.95rem,2.5vw,1.05rem)]"
