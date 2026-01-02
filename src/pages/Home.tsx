@@ -45,31 +45,42 @@ const Home = () => {
 
   return (
     <div className="overflow-hidden">
-     {/* ================= HERO SECTION ================= */}
-<section className="relative min-h-[100vh] flex items-center px-4 sm:px-6  pb-10 sm:py-4 bg-gradient-to-b from-[#FFF7E8] via-white to-[#E4FFF6] overflow-visible rounded-b-[60px] sm:rounded-b-[100px]">
 
-
+{/* HERO SECTION */}
+<section
+  className="
+    relative
+    min-h-[calc(100svh-100px)]
+    sm:min-h-[calc(100vh-80px)]
+    flex items-center
+    px-4 sm:px-6
+    py-4
+    bg-gradient-to-b from-[#FFF7E8] via-white to-[#E4FFF6]
+    overflow-hidden
+    rounded-b-[50px] sm:rounded-b-[100px]
+  "
+>
   {/* animated blobs */}
   <motion.div
     animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.05, 1] }}
     transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-    className="absolute top-24 right-24 w-40 h-40 bg-orange-300/40 rounded-full blur-3xl"
+    className="absolute top-[12%] right-[8%] w-32 h-32 bg-orange-300/40 rounded-full blur-3xl"
   />
   <motion.div
     animate={{ x: [0, -20, 0], y: [0, 25, 0], scale: [1, 1.1, 1] }}
     transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
-    className="absolute bottom-12 left-10 w-32 h-32 bg-teal-300/40 rounded-full blur-3xl"
+    className="absolute bottom-[10%] left-[6%] w-28 h-28 bg-teal-300/40 rounded-full blur-3xl"
   />
 
-  <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-8 sm:gap-10 items-center">
-
+  <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-6 items-center">
+    {/* LEFT CONTENT */}
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="text-center lg:text-left space-y-4 sm:space-y-6"
+      className="text-center lg:text-left space-y-3"
     >
-      <h1 className="text-3xl sm:text-6xl font-black text-gray-900 leading-tight">
+      <h1 className="font-black leading-tight text-[clamp(1.7rem,4.5vw,3.75rem)] text-gray-900">
         Let’s Build a Brighter Future at
         <br />
         <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-transparent bg-clip-text">
@@ -77,26 +88,27 @@ const Home = () => {
         </span>
       </h1>
 
-      <p className="text-base sm:text-xl text-gray-700 max-w-lg mx-auto lg:mx-0">
+      <p className="text-gray-700 max-w-lg mx-auto lg:mx-0 text-[clamp(0.95rem,2.4vw,1.2rem)]">
         A home for curiosity and courage. Where every child is seen.
       </p>
 
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+      <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
         <Link
           to="/admissions"
-          className="px-8 sm:px-10 py-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-2xl text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition"
+          className="px-7 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-2xl font-semibold shadow-lg text-[clamp(0.95rem,2.5vw,1.05rem)]"
         >
           🚀 Apply Now
         </Link>
         <Link
           to="/about"
-          className="border-2 border-gray-300 px-8 sm:px-10 py-4 rounded-2xl text-base sm:text-lg font-semibold"
+          className="border-2 border-gray-300 px-7 py-3 rounded-2xl font-semibold text-[clamp(0.95rem,2.5vw,1.05rem)]"
         >
           Learn More ✨
         </Link>
       </div>
     </motion.div>
 
+       {/* RIGHT IMAGE */}
     <motion.div
       initial={{ opacity: 0, x: 40 }}
       animate={{ opacity: 1, x: 0 }}
@@ -106,10 +118,47 @@ const Home = () => {
       <img
         src="/images/hero.png"
         alt="Happy Students"
-        className="w-full sm:w-[90%] max-h-[320px] sm:max-h-[520px] object-contain drop-shadow-2xl"
+        className="
+          w-[90%]  sm:w-[90%]
+          max-h-[240px] sm:max-h-[520px]
+          object-contain
+          drop-shadow-2xl
+        "
       />
     </motion.div>
 
+  </div>
+</section>
+
+{/* ⭐ WHY PARENTS CHOOSE US */}
+<section className="py-12 sm:py-20 px-4">
+  <h2 className="text-center text-3xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-10">
+    Why Parents Choose Us
+  </h2>
+
+  <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+    {features.map((f, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        whileHover={{ scale: 1.05 }}
+        className="bg-gradient-to-br from-gray-100 to-gray-200 p-4 sm:p-8 rounded-xl sm:rounded-2xl shadow-inner hover:shadow-xl transition text-center border"
+      >
+        <div
+          className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${f.color} rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-md`}
+        >
+          <f.icon className="text-white" size={22} />
+        </div>
+        <h3 className="text-sm sm:text-xl font-semibold text-gray-900">
+          {f.title}
+        </h3>
+        <p className="text-xs sm:text-base text-gray-700 mt-1 sm:mt-2 leading-snug sm:leading-relaxed">
+          {f.description}
+        </p>
+      </motion.div>
+    ))}
   </div>
 </section>
 
