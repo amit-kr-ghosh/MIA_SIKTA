@@ -103,22 +103,24 @@ const Spotlight: React.FC = () => {
   return (
     <section
       id="spotlight"
-      className="relative bg-black overflow-hidden px-4 sm:px-6 md:px-16 py-16 sm:py-20"
+      className="relative bg-neutral-950 overflow-hidden px-4 sm:px-6 md:px-16 py-16 sm:py-20"
     >
-      {/* Light Rays */}
+      {/* STRONG LIGHT RAYS – MOBILE BOOSTED */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <LightRays
           raysOrigin="top-center"
           raysColor="#ffffff"
-          raysSpeed={isSmallScreen ? 0.6 : 1.6}
-          lightSpread={isSmallScreen ? 0.25 : 0.45}
-          rayLength={isSmallScreen ? 1.4 : 2.5}
-          followMouse={!isSmallScreen}
-          mouseInfluence={isSmallScreen ? 0 : 0.08}
-          noiseAmount={0.3}
-          distortion={0.03}
-          className={`w-full h-full mix-blend-screen ${
-            isSmallScreen ? "opacity-40" : "opacity-80"
+          raysSpeed={isSmallScreen ? 1.1 : 1.4}
+          lightSpread={isSmallScreen ? 0.6 : 0.45}
+          rayLength={isSmallScreen ? 3.2 : 2.5}
+          followMouse={false}
+          mouseInfluence={0}
+          noiseAmount={isSmallScreen ? 0.45 : 0.35}
+          distortion={isSmallScreen ? 0.05 : 0.04}
+          className={`w-full h-full ${
+            isSmallScreen
+              ? "opacity-90"
+              : "opacity-80 mix-blend-screen"
           }`}
         />
       </div>
@@ -188,7 +190,6 @@ const Spotlight: React.FC = () => {
                       {icon.description}
                     </p>
 
-                    {/* Achievement label */}
                     <div
                       className={`mt-2 px-3 py-2 rounded-lg bg-gradient-to-r ${icon.gradient} text-white text-sm font-semibold text-center`}
                     >
