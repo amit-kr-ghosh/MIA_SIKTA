@@ -64,7 +64,7 @@ const Header = () => {
                 to={link.path}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:shadow-md ${
                   isActive(link.path)
-                    ? "bg-gradient-to-r from-violet-600 to-indigo-500 text-white shadow-lg scale-105"
+                    ? "bg-gradient-to-r from-black to-violet-900 text-white shadow-lg scale-105"
                     : "text-gray-700 hover:bg-gray-100"
                 }`}
               >
@@ -118,7 +118,7 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={`block py-3 text-base font-semibold rounded-lg transition-all duration-300 ${
                     isActive(link.path)
-                      ? "bg-gradient-to-r from-violet-600 to-indigo-500 text-white shadow-md"
+                      ? "bg-gradient-to-r from-black to-violet-900 text-white shadow-md"
                       : "text-gray-700 bg-gray-50 hover:bg-gray-100"
                   }`}
                 >

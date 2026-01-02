@@ -103,38 +103,65 @@ const Spotlight: React.FC = () => {
   return (
     <section
       id="spotlight"
-      className="relative bg-neutral-950 overflow-hidden px-4 sm:px-6 md:px-16 py-16 sm:py-20"
+      className={`relative overflow-hidden px-4 sm:px-6 md:px-16 py-16 sm:py-20
+        ${
+          isSmallScreen
+            ? "bg-[url('/images/bg-black.jpeg')] bg-cover bg-center"
+            : "bg-neutral-950"
+        }
+      `}
     >
-      {/* LIGHT RAYS – MOBILE SAFE */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#ffffff"
-          raysSpeed={1.4}
-          lightSpread={0.65}
-          rayLength={4}
-          followMouse={false}
-          mouseInfluence={0}
-          noiseAmount={0.35}
-          distortion={0.04}
-          className={`w-full h-full ${
-            isSmallScreen
-              ? "opacity-100"
-              : "opacity-80 mix-blend-screen"
-          }`}
-        />
-      </div>
+      {/* LIGHT RAYS – DESKTOP ONLY */}
+      {!isSmallScreen && (
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#ffffff"
+            raysSpeed={1.4}
+            lightSpread={0.65}
+            rayLength={4}
+            followMouse={false}
+            mouseInfluence={0}
+            noiseAmount={0.35}
+            distortion={0.04}
+            className="w-full h-full opacity-80 mix-blend-screen"
+          />
+        </div>
+      )}
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">
-            Student Spotlight
-          </h2>
-          <p className="text-gray-400 mt-3 text-sm sm:text-base">
-            Celebrating Excellence & Achievement
-          </p>
-        </div>
+  {/* Heading */}
+<div className="relative text-center mb-14">
+  {/* subtle backdrop for readability */}
+  <div className="absolute inset-0 -z-10 flex justify-center">
+    <div className="w-[90%] sm:w-[70%] h-full bg-black/40 blur-2xl rounded-full" />
+  </div>
+
+  <h2
+    className="
+      text-4xl sm:text-5xl md:text-6xl
+      font-extrabold
+      text-white
+      tracking-tight
+      drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]
+    "
+  >
+    Student Spotlight
+  </h2>
+
+  <p
+    className="
+      mt-4
+      text-sm sm:text-base
+      text-gray-300
+      tracking-wide
+      drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]
+    "
+  >
+    Celebrating Excellence & Achievement
+  </p>
+</div>
+
 
         {/* Carousel */}
         <div className="relative flex items-center justify-center">
