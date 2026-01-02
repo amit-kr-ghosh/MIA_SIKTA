@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ScrollToTop from "./components/ScrollToTop";
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,6 +15,7 @@ import { motion } from 'framer-motion';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"

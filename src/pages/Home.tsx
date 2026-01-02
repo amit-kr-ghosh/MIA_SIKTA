@@ -93,19 +93,18 @@ const Home = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              
-<motion.div
-  animate={{ scale: [1, 1.06, 1] }}
-  transition={{
-    duration: 1.8,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
-  className="relative inline-block"
->
-  {/* Rounded glow layer */}
-  <span
-    className="
+              <motion.div
+                animate={{ scale: [1, 1.06, 1] }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="relative inline-block"
+              >
+                {/* Rounded glow layer */}
+                <span
+                  className="
       absolute inset-0
       rounded-2xl
       bg-gradient-to-r from-orange-400 to-yellow-400
@@ -113,15 +112,15 @@ const Home = () => {
       opacity-50
       -z-10
     "
-  />
+                />
 
-  <motion.div
-    whileHover={{ scale: 1.12, y: -2 }}
-    whileTap={{ scale: 0.96 }}
-  >
-    <Link
-  to="/admissions"
-  className="
+                <motion.div
+                  whileHover={{ scale: 1.12, y: -2 }}
+                  whileTap={{ scale: 0.96 }}
+                >
+                  <Link
+                    to="/admissions"
+                    className="
     relative
     px-7 py-3
     bg-gradient-to-r from-orange-500 to-yellow-500
@@ -133,12 +132,11 @@ const Home = () => {
     flex items-center justify-center
     text-center
   "
->
- Apply Now
-</Link>
-
-  </motion.div>
-</motion.div>
+                  >
+                    Apply Now
+                  </Link>
+                </motion.div>
+              </motion.div>
               <Link
                 to="/about"
                 className="border-2 border-gray-300 px-7 py-3 rounded-2xl font-semibold text-[clamp(0.95rem,2.5vw,1.05rem)]"
@@ -156,7 +154,7 @@ const Home = () => {
             className="flex justify-center"
           >
             <img
-              src="/images/hero4.gif"
+              src="/images/hero3.gif"
               alt="Happy Students"
               className="
           w-[100%]  sm:w-[100%]
@@ -202,6 +200,9 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Spotlight */}
+      <Spotlight />
+
       {/* 🌿 CAMPUS LIFE */}
       <section className="py-14 sm:py-20 bg-white px-4">
         <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3 sm:mb-4">
@@ -244,11 +245,10 @@ const Home = () => {
         </div>
       </section>
 
-      <Spotlight/>
       {/* 🎓 EDUCATION BEYOND ACADEMICS */}
       <section className="py-20 bg-white text-center px-6">
         <h2 className="text-4xl font-extrabold text-gray-900 mb-6">
-           Education Beyond Academics
+          Education Beyond Academics
         </h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
           We don’t just teach for exams — we prepare students for LIFE.
@@ -299,7 +299,7 @@ const Home = () => {
       {/* 💬 TESTIMONIALS */}
       <section className="py-20 bg-gradient-to-b from-orange-50 via-white to-yellow-50 px-4">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 text-center mb-4">
-           What Parents Say
+          What Parents Say
         </h2>
         <p className="text-gray-600 text-base sm:text-lg mb-12 max-w-2xl mx-auto text-center">
           Their experience. Their trust. Their words.
