@@ -120,21 +120,23 @@ const Home = () => {
     whileTap={{ scale: 0.96 }}
   >
     <Link
-      to="/admissions"
-      className="
-        relative
-        px-7 py-3
-        bg-gradient-to-r from-orange-500 to-yellow-500
-        text-white
-        rounded-2xl
-        font-semibold
-        shadow-lg
-        text-[clamp(0.95rem,2.5vw,1.05rem)]
-        flex items-center gap-2
-      "
-    >
-      🚀 Apply Now
-    </Link>
+  to="/admissions"
+  className="
+    relative
+    px-7 py-3
+    bg-gradient-to-r from-orange-500 to-yellow-500
+    text-white
+    rounded-2xl
+    font-semibold
+    shadow-lg
+    text-[clamp(0.95rem,2.5vw,1.05rem)]
+    flex items-center justify-center
+    text-center
+  "
+>
+  🚀 Apply Now
+</Link>
+
   </motion.div>
 </motion.div>
               <Link
