@@ -297,7 +297,7 @@ const Home = () => {
       </section>
 
       {/* 💬 TESTIMONIALS */}
-      <section className="py-20 bg-gradient-to-b from-orange-50 via-white to-yellow-50 px-4">
+      <section className="py-20 bg-white px-4">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 text-center mb-4">
           What Parents Say
         </h2>
