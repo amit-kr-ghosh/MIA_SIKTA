@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, GraduationCap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -21,24 +21,40 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="backdrop-blur-xl bg-white/70 shadow-[0_4px_30px_rgba(0,0,0,0.08)] sticky top-0 z-50 border-b border-white/20">
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
       <div className="max-w-7xl mx-auto px-4 lg:px-5">
         <div className="flex items-center justify-between h-20">
 
-         
-          <Link to="/" className="flex items-center space-x-3">
-           
-              <img className="h-20 w-20 object-contain" src="images/logo1.png" alt="MIA Logo" />
-            
-            <div>
-              <h1 className="text-xl font-extrabold tracking-wide bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+          {/* LOGO + TITLE */}
+          <Link
+            to="/"
+            className="flex items-center gap-3 max-w-[75%] sm:max-w-none"
+          >
+            <img
+              src="/images/logo1.png"
+              alt="MIA Logo"
+              className="h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 object-contain flex-shrink-0"
+            />
+
+            <div className="min-w-0">
+              <h1
+                className="
+                  font-extrabold tracking-wide
+                  bg-gradient-to-r from-gray-900 to-gray-600
+                  bg-clip-text text-transparent
+                  text-[15px] sm:text-lg lg:text-xl
+                  leading-tight break-words
+                "
+              >
                 Mothers International Academy
               </h1>
-              <p className="text-xs text-gray-600 font-medium tracking-wide">CBSE +2 School</p>
+              <p className="text-[11px] sm:text-xs text-gray-600 font-medium tracking-wide">
+                CBSE +2 School
+              </p>
             </div>
           </Link>
 
-          {/* NAV LINKS */}
+          {/* DESKTOP NAV */}
           <nav className="hidden lg:flex items-center space-x-2">
             {navLinks.map((link) => (
               <Link
@@ -54,22 +70,23 @@ const Header = () => {
               </Link>
             ))}
 
-            {/* ⭐ Upgraded Apply Now Button */}
-           <Link
-  to="/admissions"
-  className="ml-4 px-6 py-2 font-bold rounded-xl relative overflow-hidden
-  bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-gray-900
-  shadow-[0_0_20px_rgba(255,200,0,0.6)]
-  border-2 border-amber-300 animate-[pulse_2s_infinite]
-  before:absolute before:inset-0 before:bg-amber-300/40 before:blur-xl before:animate-[glow_2s_infinite]
-  hover:scale-110 hover:shadow-[0_0_35px_rgba(255,200,0,0.8)]
-  transition-all duration-300"
->
-  Apply Now !
-</Link>
-
+            {/* APPLY NOW (DESKTOP) */}
+            <Link
+              to="/admissions"
+              className="ml-4 px-6 py-2 font-bold rounded-xl relative overflow-hidden
+                bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-gray-900
+                shadow-[0_0_20px_rgba(255,200,0,0.6)]
+                border-2 border-amber-300
+                animate-[pulse_2s_infinite]
+                before:absolute before:inset-0 before:bg-amber-300/40 before:blur-xl
+                hover:scale-110 hover:shadow-[0_0_35px_rgba(255,200,0,0.8)]
+                transition-all duration-300"
+            >
+              Apply Now !
+            </Link>
           </nav>
 
+          {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"
@@ -105,20 +122,19 @@ const Header = () => {
                 </Link>
               ))}
 
-              {/* ⭐ Creative Apply Now on Mobile */}
+              {/* APPLY NOW (MOBILE) */}
               <Link
-  to="/admissions"
-  onClick={() => setIsMenuOpen(false)}
-  className="block px-4 py-3 text-lg font-extrabold rounded-xl relative overflow-hidden
-  bg-gradient-to-br from-amber-400 to-amber-600 text-gray-900
-  shadow-[0_0_18px_rgba(255,200,0,0.5)] border border-amber-300
-  animate-[pulse_2s_infinite]
-  before:absolute before:inset-0 before:bg-amber-200/30 before:blur-xl before:animate-[glow_2s_infinite]
-  hover:scale-105 transition-all duration-300"
->
-  Apply Now !
-</Link>
-
+                to="/admissions"
+                onClick={() => setIsMenuOpen(false)}
+                className="block px-4 py-3 text-lg font-extrabold rounded-xl relative overflow-hidden
+                  bg-gradient-to-br from-amber-400 to-amber-600 text-gray-900
+                  shadow-[0_0_18px_rgba(255,200,0,0.5)]
+                  border border-amber-300
+                  animate-[pulse_2s_infinite]
+                  hover:scale-105 transition-all duration-300"
+              >
+                Apply Now !
+              </Link>
             </nav>
           </motion.div>
         )}
