@@ -106,7 +106,7 @@ const Spotlight: React.FC = () => {
       className={`relative overflow-hidden px-4 sm:px-6 md:px-16 py-16 sm:py-20
         ${
           isSmallScreen
-            ? "bg-[url('/images/bg-black.jpeg')] bg-cover bg-center"
+            ? "bg-[url('/images/home/bg-black.jpeg')] bg-cover bg-center"
             : "bg-neutral-950"
         }
       `}
