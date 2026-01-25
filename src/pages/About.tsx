@@ -29,7 +29,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             initial={{ opacity: 0, scale: 0.95 }}
             viewport={{ once: true }}
-            src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg"
+            src="images/gallery/school_building.png"
             alt="School Campus"
             className="rounded-2xl shadow-xl"
           />
@@ -81,51 +81,53 @@ const About = () => {
         </div>
       </section>
 
-      {/* ================= PRINCIPAL MESSAGE ================= */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-indigo-50 to-teal-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-4xl font-bold text-center text-indigo-900 mb-12">
-            From the Principal’s Desk
-          </h2>
+{/* ================= DIRECTORS MESSAGE ================= */}
+<section className="py-16 sm:py-20">
+  <div className="max-w-5xl mx-auto px-4 sm:px-6">
+    <h2 className="text-2xl sm:text-4xl font-bold text-center text-indigo-900 mb-12">
+      From the Director’s Desk
+    </h2>
 
-          <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-10 relative">
-            <Quote className="absolute -top-5 left-6 w-10 h-10 text-yellow-400" />
+   <div className="bg-white rounded-3xl shadow-2xl shadow-black/40 p-6 sm:p-10 relative">
 
-            <div className="flex flex-col sm:flex-row items-center gap-6 mb-6">
-              <img
-                src="images/logo/logo.png"
-                alt="Principal"
-                className="w-28 h-28 rounded-full object-cover border-4 border-indigo-800 shadow-md"
-              />
+      <Quote className="absolute -top-5 left-6 w-10 h-10 text-yellow-400" />
 
-              <div className="text-center sm:text-left">
-                <h3 className="text-xl font-bold text-indigo-900">
-                  Principal
-                </h3>
-                <p className="text-gray-600">
-                  Mother’s International Academy
-                </p>
-              </div>
-            </div>
+      <div className="flex flex-col sm:flex-row items-center gap-6 mb-6">
+        <img
+          src="images/logo/logo.png"
+          alt="Directors"
+          className="w-28 h-28 rounded-full object-cover border-4 border-indigo-800 shadow-md"
+        />
 
-            <p className="text-gray-700 mb-4 leading-relaxed">
-              At Mother’s International Academy, we believe that education is a
-              partnership between the school and the family. Together, we shape
-              not only academic success but strong character and values.
-            </p>
-
-            <p className="text-gray-700 mb-4 leading-relaxed">
-              Our goal is to help every child discover their potential, develop
-              confidence, and grow into a responsible, compassionate, and
-              capable citizen of the world.
-            </p>
-
-            <p className="text-indigo-900 font-semibold mt-6">
-              “Education with a difference — to make a difference.”
-            </p>
-          </div>
+        <div className="text-center sm:text-left">
+          <h3 className="text-xl font-bold text-indigo-900">
+            Director
+          </h3>
+          <p className="text-gray-600">
+            Mother’s International Academy
+          </p>
         </div>
-      </section>
+      </div>
+
+      <p className="text-gray-700 mb-4 leading-relaxed">
+        At Mother’s International Academy, we believe that education is a
+        partnership between the school and the family. Together, we shape
+        not only academic success but strong character and values.
+      </p>
+
+      <p className="text-gray-700 mb-4 leading-relaxed">
+        Our goal is to help every child discover their potential, develop
+        confidence, and grow into a responsible, compassionate, and
+        capable citizen of the world.
+      </p>
+
+      <p className="text-indigo-900 font-semibold mt-6">
+        “Education with a difference — to make a difference.”
+      </p>
+    </div>
+  </div>
+</section>
+
 
       {/* ================= CORE VALUES ================= */}
       <section className="py-16 sm:py-20">

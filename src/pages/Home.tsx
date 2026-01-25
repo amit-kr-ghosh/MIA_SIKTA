@@ -212,9 +212,9 @@ const Home = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 max-w-7xl mx-auto">
           {[
-            "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/5212653/pexels-photo-5212653.jpeg?auto=compress&cs=tinysrgb&w=800",
-            "https://images.pexels.com/photos/8087871/pexels-photo-8087871.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/18650478/pexels-photo-18650478.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/10638115/pexels-photo-10638115.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "https://images.pexels.com/photos/32399930/pexels-photo-32399930.jpeg?auto=compress&cs=tinysrgb&w=800",
           ].map((img, i) => (
             <motion.div
               key={i}
