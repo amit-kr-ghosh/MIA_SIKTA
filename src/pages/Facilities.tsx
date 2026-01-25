@@ -90,21 +90,19 @@ const Facilities = () => {
     <div className="bg-white">
 
       {/* HERO */}
-      <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-800 text-white py-14 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-5xl font-extrabold mb-4"
-          >
-            Our World-Class Facilities
-          </motion.h1>
-          <p className="text-sm sm:text-xl text-indigo-100 max-w-3xl mx-auto">
-            Designed to inspire curiosity, creativity, and confidence
-          </p>
+       <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-800 text-white py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <h1 className="text-3xl sm:text-5xl font-bold mb-4">
+              Our World-Class Facilities
+            </h1>
+            <p className="text-indigo-100 text-base sm:text-xl max-w-3xl mx-auto">
+             Designed to inspire curiosity, creativity, and confidence
+            </p>
+          </motion.div>
         </div>
       </section>
+
 
       {/* FACILITIES GRID */}
       <section className="py-12 sm:py-20">

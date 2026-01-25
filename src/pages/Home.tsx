@@ -46,126 +46,124 @@ const Home = () => {
 
   return (
     <div className="overflow-hidden">
-      {/* HERO SECTION */}
-      <section
-        className="
+  {/* ================= HERO SECTION ================= */}
+<section
+  className="
     relative
     min-h-[calc(100svh-100px)]
     sm:min-h-[calc(100vh-80px)]
     flex items-center
     px-4 sm:px-6
-    py-4
-    bg-gradient-to-b from-[#FFF7E8] via-white to-[#E4FFF6]
+    py-6
     overflow-hidden
     rounded-b-[50px] sm:rounded-b-[100px]
   "
-      >
-        {/* animated blobs */}
-        <motion.div
-          animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.05, 1] }}
-          transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-          className="absolute top-[12%] right-[8%] w-32 h-32 bg-orange-300/40 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ x: [0, -20, 0], y: [0, 25, 0], scale: [1, 1.1, 1] }}
-          transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
-          className="absolute bottom-[10%] left-[6%] w-28 h-28 bg-teal-300/40 rounded-full blur-3xl"
-        />
+>
+  {/* ===== BACKGROUND IMAGE ===== */}
+  <div className="absolute inset-0 -z-20">
+    <img
+      src="/images/gallery/school-build2.png"
+      alt="Mother’s International Academy Campus"
+      className="
+        w-full h-full
+        object-cover
+        scale-105
+        opacity-40
+      "
+    />
+  </div>
 
-        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-6 items-center">
-          {/* LEFT CONTENT */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left space-y-3"
-          >
-            <h1 className="font-black leading-tight text-[clamp(1.7rem,4.5vw,3.75rem)] text-gray-900">
-              Let’s Build a Brighter Future at
-              <br />
-              <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-transparent bg-clip-text">
-                Mother’s International Academy
-              </span>
-            </h1>
-
-            <p className="text-gray-700 max-w-lg mx-auto lg:mx-0 text-[clamp(0.95rem,2.4vw,1.2rem)]">
-              A home for curiosity and courage. Where every child is seen.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <motion.div
-                animate={{ scale: [1, 1.06, 1] }}
-                transition={{
-                  duration: 1.8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="relative inline-block"
-              >
-                {/* Rounded glow layer */}
-                <span
-                  className="
+  {/* ===== OVERLAY ===== */}
+  <div
+    className="
       absolute inset-0
-      rounded-2xl
-      bg-gradient-to-r from-orange-400 to-yellow-400
-      blur-xl
-      opacity-50
       -z-10
+      bg-gradient-to-b
+      from-[#FFF7E8]/80
+      via-white/70
+      to-[#E4FFF6]/85
+      backdrop-blur-[1.5px]
+      pointer-events-none
     "
-                />
+  />
 
-                <motion.div
-                  whileHover={{ scale: 1.12, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
-                >
-                  <Link
-                    to="/admissions"
-                    className="
-    relative
-    px-7 py-3
-    bg-gradient-to-r from-orange-500 to-yellow-500
-    text-white
-    rounded-2xl
-    font-semibold
-    shadow-lg
-    text-[clamp(0.95rem,2.5vw,1.05rem)]
-    flex items-center justify-center
-    text-center
-  "
-                  >
-                    Apply Now
-                  </Link>
-                </motion.div>
-              </motion.div>
-              <Link
-                to="/about"
-                className="border-2 border-gray-300 px-7 py-3 rounded-2xl font-semibold text-[clamp(0.95rem,2.5vw,1.05rem)]"
-              >
-                Learn More
-              </Link>
-            </div>
-          </motion.div>
+  {/* ===== MAIN CONTENT ===== */}
+  <div className="relative z-10 max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-6 items-center">
 
-          {/* RIGHT IMAGE */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex justify-center"
-          >
-            <img
-              src="/images/home/hero3.gif"
-              alt="Happy Students"
+    {/* LEFT */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-center lg:text-left space-y-4"
+    >
+      <h1 className="font-black leading-tight text-[clamp(1.7rem,4.5vw,3.75rem)] text-gray-900">
+        Let’s Build a Brighter Future at
+        <br />
+        <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-transparent bg-clip-text">
+          Mother’s International Academy
+        </span>
+      </h1>
+
+      <p className="text-gray-700 max-w-lg mx-auto lg:mx-0 text-[clamp(0.95rem,2.4vw,1.2rem)]">
+        A home for curiosity and courage. Where every child is seen.
+      </p>
+
+      <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+
+        {/* APPLY */}
+        <motion.div
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 1.8, repeat: Infinity }}
+          className="relative inline-block"
+        >
+          <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-yellow-400 blur-xl opacity-50 -z-10" />
+
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/admissions"
               className="
-          w-[100%]  sm:w-[100%]
-          max-h-[240px] sm:max-h-[520px]
-          object-contain
-          drop-shadow-2xl
-        "
-            />
+                px-7 py-3
+                bg-gradient-to-r from-orange-500 to-yellow-500
+                text-white
+                rounded-2xl
+                font-semibold
+                shadow-lg
+                flex justify-center
+              "
+            >
+              Apply Now
+            </Link>
           </motion.div>
-        </div>
-      </section>
+        </motion.div>
+
+        <Link
+          to="/about"
+          className="border-2 border-gray-300 px-7 py-3 rounded-2xl font-semibold"
+        >
+          Learn More
+        </Link>
+      </div>
+    </motion.div>
+
+    {/* RIGHT */}
+    <motion.div
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+      className="flex justify-center"
+    >
+      <img
+        src="/images/home/hero3.gif"
+        alt="Happy Students"
+        className="w-full max-h-[260px] sm:max-h-[520px] object-contain drop-shadow-2xl"
+      />
+    </motion.div>
+
+  </div>
+</section>
+
+
 
       {/* ⭐ WHY PARENTS CHOOSE US */}
       <section className="py-12 sm:py-20 px-4">

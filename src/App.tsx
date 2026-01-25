@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
 import Layout from "./components/Layout";
 
+/* Website Pages */
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Academics from "./pages/Academics";
@@ -15,6 +16,11 @@ import Notices from "./pages/Notices";
 import Contact from "./pages/Contact";
 import Admissions from "./pages/Admissions";
 
+/* Admin Pages */
+import AdminLogin from "./pages/AdminLogin";
+import AddNotice from "./pages/AddNotice";
+import AdminProtectedRoute from "./routes/AdminProtectedRoute";
+
 /* ---------------- LOADING SCREEN ---------------- */
 const LoadingScreen = ({ loading }: { loading: boolean }) => (
   <AnimatePresence>
@@ -23,26 +29,22 @@ const LoadingScreen = ({ loading }: { loading: boolean }) => (
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
-        className="
-          fixed inset-0 z-[9999]
-          flex flex-col items-center justify-center
-          bg-gradient-to-br from-amber-100 via-white to-indigo-100
-        "
+        className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-br from-amber-100 via-white to-indigo-100"
       >
         <motion.img
           src="/images/logo/logo1.png"
           alt="Loading"
+          className="h-20 w-20 mb-6"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="h-20 w-20 mb-6"
         />
 
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-lg font-bold text-gray-800 tracking-wide"
+          className="text-lg font-bold text-gray-800"
         >
           Mothers International Academy
         </motion.h2>
@@ -52,11 +54,7 @@ const LoadingScreen = ({ loading }: { loading: boolean }) => (
             className="h-full bg-gradient-to-r from-amber-400 to-amber-600"
             initial={{ x: "-100%" }}
             animate={{ x: "100%" }}
-            transition={{
-              repeat: Infinity,
-              duration: 1.2,
-              ease: "linear",
-            }}
+            transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}
           />
         </div>
       </motion.div>
@@ -70,7 +68,7 @@ function App() {
 
   useEffect(() => {
     const onLoad = () => {
-      setTimeout(() => setLoading(false), 400); // smooth exit
+      setTimeout(() => setLoading(false), 400);
     };
 
     if (document.readyState === "complete") {
@@ -79,7 +77,9 @@ function App() {
       window.addEventListener("load", onLoad);
     }
 
-    return () => window.removeEventListener("load", onLoad);
+    return () => {
+      window.removeEventListener("load", onLoad);
+    };
   }, []);
 
   return (
@@ -91,35 +91,103 @@ function App() {
           <ScrollToTop />
 
           <Routes>
-            <Route path="/" element={<Layout><Home /></Layout>} />
-            <Route path="/about" element={<Layout><About /></Layout>} />
-            <Route path="/academics" element={<Layout><Academics /></Layout>} />
-            <Route path="/facilities" element={<Layout><Facilities /></Layout>} />
-            <Route path="/gallery" element={<Layout><Gallery /></Layout>} />
-            <Route path="/achievements" element={<Layout><Achievements /></Layout>} />
-            <Route path="/notices" element={<Layout><Notices /></Layout>} />
+            {/* ========= WEBSITE ========= */}
+            <Route
+              path="/"
+              element={
+                <Layout>
+                  <Home />
+                </Layout>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <Layout>
+                  <About />
+                </Layout>
+              }
+            />
+            <Route
+              path="/academics"
+              element={
+                <Layout>
+                  <Academics />
+                </Layout>
+              }
+            />
+            <Route
+              path="/facilities"
+              element={
+                <Layout>
+                  <Facilities />
+                </Layout>
+              }
+            />
+            <Route
+              path="/gallery"
+              element={
+                <Layout>
+                  <Gallery />
+                </Layout>
+              }
+            />
+            <Route
+              path="/achievements"
+              element={
+                <Layout>
+                  <Achievements />
+                </Layout>
+              }
+            />
+            <Route
+              path="/notices"
+              element={
+                <Layout>
+                  <Notices />
+                </Layout>
+              }
+            />
 
             <Route
               path="/contact"
               element={
                 <Layout>
-                  {/* ================= HERO ================= */}
-                        <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-700 text-white py-14 sm:py-20">
-                          <div className="max-w-7xl mx-auto px-4 text-center">
-                            <h1 className="text-3xl sm:text-5xl font-extrabold mb-3">
-                              Contact Us
-                            </h1>
-                            <p className="text-sm sm:text-xl text-indigo-100 max-w-3xl mx-auto">
-                              We’re here to help. Reach out to us anytime.
-                            </p>
-                          </div>
-                        </section>
+                  <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-700 text-white py-14 sm:py-20">
+                    <div className="max-w-7xl mx-auto px-4 text-center">
+                      <h1 className="text-3xl sm:text-5xl font-extrabold mb-3">
+                        Contact Us
+                      </h1>
+                      <p className="text-sm sm:text-xl text-indigo-100">
+                        We’re here to help. Reach out to us anytime.
+                      </p>
+                    </div>
+                  </section>
                   <Contact />
                 </Layout>
               }
             />
 
-            <Route path="/admissions" element={<Admissions />} />
+            <Route
+              path="/admissions"
+              element={
+                <Layout>
+                  <Admissions />
+                </Layout>
+              }
+            />
+
+            {/* ========= ADMIN ========= */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+
+            <Route
+              path="/admin/add-notice"
+              element={
+                <AdminProtectedRoute>
+                  <AddNotice />
+                </AdminProtectedRoute>
+              }
+            />
           </Routes>
         </>
       )}
