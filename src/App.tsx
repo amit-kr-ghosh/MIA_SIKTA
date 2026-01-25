@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
 import Layout from "./components/Layout";
 
-/* Website Pages */
+/* ========= WEBSITE PAGES ========= */
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Academics from "./pages/Academics";
@@ -16,10 +16,18 @@ import Notices from "./pages/Notices";
 import Contact from "./pages/Contact";
 import Admissions from "./pages/Admissions";
 
-/* Admin Pages */
+/* ========= ADMIN ========= */
 import AdminLogin from "./pages/AdminLogin";
-import AddNotice from "./pages/AddNotice";
 import AdminProtectedRoute from "./routes/AdminProtectedRoute";
+
+/* Admin Layout + Pages */
+import AdminLayout from "./admin/AdminLayout";
+import { Dashboard } from "./admin/pages/Dashboard";
+import { AdmissionDetails } from "./admin/pages/AdmissionDetails";
+import { ContactDetails } from "./admin/pages/ContactDetails";
+import { NoticeDetails } from "./admin/pages/NoticeDetails";
+import { AddNotice } from "./admin/pages/AddNotice";
+import { EditNotice } from "./admin/pages/EditNotice";
 
 /* ---------------- LOADING SCREEN ---------------- */
 const LoadingScreen = ({ loading }: { loading: boolean }) => (
@@ -29,7 +37,8 @@ const LoadingScreen = ({ loading }: { loading: boolean }) => (
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
-        className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-br from-amber-100 via-white to-indigo-100"
+        className="fixed inset-0 z-[9999] flex flex-col items-center justify-center
+                   bg-gradient-to-br from-amber-100 via-white to-indigo-100"
       >
         <motion.img
           src="/images/logo/logo1.png"
@@ -67,9 +76,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const onLoad = () => {
-      setTimeout(() => setLoading(false), 400);
-    };
+    const onLoad = () => setTimeout(() => setLoading(false), 400);
 
     if (document.readyState === "complete") {
       onLoad();
@@ -77,9 +84,7 @@ function App() {
       window.addEventListener("load", onLoad);
     }
 
-    return () => {
-      window.removeEventListener("load", onLoad);
-    };
+    return () => window.removeEventListener("load", onLoad);
   }, []);
 
   return (
@@ -91,63 +96,15 @@ function App() {
           <ScrollToTop />
 
           <Routes>
-            {/* ========= WEBSITE ========= */}
-            <Route
-              path="/"
-              element={
-                <Layout>
-                  <Home />
-                </Layout>
-              }
-            />
-            <Route
-              path="/about"
-              element={
-                <Layout>
-                  <About />
-                </Layout>
-              }
-            />
-            <Route
-              path="/academics"
-              element={
-                <Layout>
-                  <Academics />
-                </Layout>
-              }
-            />
-            <Route
-              path="/facilities"
-              element={
-                <Layout>
-                  <Facilities />
-                </Layout>
-              }
-            />
-            <Route
-              path="/gallery"
-              element={
-                <Layout>
-                  <Gallery />
-                </Layout>
-              }
-            />
-            <Route
-              path="/achievements"
-              element={
-                <Layout>
-                  <Achievements />
-                </Layout>
-              }
-            />
-            <Route
-              path="/notices"
-              element={
-                <Layout>
-                  <Notices />
-                </Layout>
-              }
-            />
+            {/* ================= PUBLIC WEBSITE ================= */}
+            <Route path="/" element={<Layout><Home /></Layout>} />
+            <Route path="/about" element={<Layout><About /></Layout>} />
+            <Route path="/academics" element={<Layout><Academics /></Layout>} />
+            <Route path="/facilities" element={<Layout><Facilities /></Layout>} />
+            <Route path="/gallery" element={<Layout><Gallery /></Layout>} />
+            <Route path="/achievements" element={<Layout><Achievements /></Layout>} />
+            <Route path="/notices" element={<Layout><Notices /></Layout>} />
+            <Route path="/admissions" element={<Layout><Admissions /></Layout>} />
 
             <Route
               path="/contact"
@@ -168,26 +125,28 @@ function App() {
               }
             />
 
-            <Route
-              path="/admissions"
-              element={
-                <Layout>
-                  <Admissions />
-                </Layout>
-              }
-            />
-
-            {/* ========= ADMIN ========= */}
+            {/* ================= ADMIN LOGIN ================= */}
             <Route path="/admin/login" element={<AdminLogin />} />
 
+            {/* ================= ADMIN PANEL ================= */}
             <Route
-              path="/admin/add-notice"
+              path="/admin"
               element={
                 <AdminProtectedRoute>
-                  <AddNotice />
+                  <AdminLayout />
                 </AdminProtectedRoute>
               }
-            />
+            >
+              {/* IMPORTANT: default admin route */}
+              <Route index element={<Dashboard />} />
+
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="admissions" element={<AdmissionDetails />} />
+              <Route path="contacts" element={<ContactDetails />} />
+              <Route path="notices" element={<NoticeDetails />} />
+              <Route path="notices/add" element={<AddNotice />} />
+              <Route path="notices/edit/:id" element={<EditNotice />} />
+            </Route>
           </Routes>
         </>
       )}

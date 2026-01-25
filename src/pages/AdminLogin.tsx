@@ -1,11 +1,19 @@
-import { useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
-import { useNavigate } from 'react-router-dom';
-import { Lock, Mail } from 'lucide-react';
+import { useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+import { useNavigate } from "react-router-dom";
+import {
+  Lock,
+  Mail,
+  Loader2,
+  Shield,
+  Eye,
+  EyeOff,
+} from "lucide-react";
 
 const AdminLogin = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -13,71 +21,146 @@ const AdminLogin = () => {
     e.preventDefault();
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
+    /* 1️⃣ LOGIN */
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
+    if (error || !data.user) {
+      setLoading(false);
+      alert(error?.message || "Login failed");
+      return;
+    }
+
+    /* 2️⃣ CHECK ROLE */
+    const { data: roleData, error: roleError } = await supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", data.user.id)
+      .maybeSingle();
+
     setLoading(false);
 
-    if (error) {
-      alert(error.message);
-    } else {
-      navigate('/admin/add-notice');
+    if (roleError || roleData?.role !== "admin") {
+      await supabase.auth.signOut();
+      alert("Access denied. Admin only.");
+      return;
     }
+
+    /* 3️⃣ REDIRECT */
+    navigate("/admin/dashboard", { replace: true });
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-800 px-4">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-8">
+    <div className="min-h-screen flex items-center justify-center bg-neutral-950 px-4">
+      <div
+        className="
+          w-full max-w-md
+          bg-neutral-900 border border-neutral-800
+          rounded-3xl p-6 sm:p-8
+          shadow-xl
+        "
+      >
+        {/* HEADER */}
+        <div className="text-center mb-6">
+          <div className="mx-auto w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-4">
+            <Shield className="w-7 h-7 text-emerald-400" />
+          </div>
 
-        <h2 className="text-2xl font-bold text-center text-gray-900 mb-2">
-          Admin Login
-        </h2>
-        <p className="text-sm text-center text-gray-500 mb-6">
-          Authorized access only
-        </p>
+          <h2 className="text-2xl font-extrabold text-white">
+            Admin Login
+          </h2>
+          <p className="text-sm text-neutral-400 mt-1">
+            Authorized access only
+          </p>
+        </div>
 
+        {/* FORM */}
         <form onSubmit={loginAdmin} className="space-y-4">
 
-          {/* Email */}
-          <div className="relative">
-            <Mail className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
-            <input
-              type="email"
-              placeholder="Admin Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
-            />
+          {/* EMAIL */}
+          <div>
+            <label className="block text-xs text-neutral-400 mb-1">
+              Email Address
+            </label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
+              <input
+                type="email"
+                placeholder="admin@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="
+                  w-full pl-10 py-3 rounded-xl
+                  bg-neutral-800 border border-neutral-700
+                  text-neutral-100 placeholder-neutral-500
+                  focus:outline-none focus:border-emerald-500
+                "
+              />
+            </div>
           </div>
 
-          {/* Password */}
-          <div className="relative">
-            <Lock className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none"
-            />
+          {/* PASSWORD */}
+          <div>
+            <label className="block text-xs text-neutral-400 mb-1">
+              Password
+            </label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
+
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="
+                  w-full pl-10 pr-10 py-3 rounded-xl
+                  bg-neutral-800 border border-neutral-700
+                  text-neutral-100 placeholder-neutral-500
+                  focus:outline-none focus:border-emerald-500
+                "
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                className="
+                  absolute right-3 top-1/2 -translate-y-1/2
+                  text-neutral-400 hover:text-white
+                "
+              >
+                {showPassword ? (
+                  <EyeOff className="w-4 h-4" />
+                ) : (
+                  <Eye className="w-4 h-4" />
+                )}
+              </button>
+            </div>
           </div>
 
-          {/* Button */}
+          {/* SUBMIT */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-indigo-600 to-teal-600 text-white font-semibold py-3 rounded-xl hover:shadow-lg transition disabled:opacity-70"
+            className="
+              w-full mt-2 py-3 rounded-xl
+              bg-emerald-600 hover:bg-emerald-500
+              text-white font-semibold
+              flex items-center justify-center gap-2
+              transition
+              disabled:opacity-60 disabled:cursor-not-allowed
+            "
           >
-            {loading ? 'Signing in...' : 'Login'}
+            {loading && <Loader2 className="w-4 h-4 animate-spin" />}
+            {loading ? "Signing in..." : "Login"}
           </button>
-
         </form>
 
-        <p className="mt-6 text-xs text-center text-gray-400">
+        {/* FOOTER */}
+        <p className="mt-6 text-xs text-center text-neutral-500">
           Mother’s International Academy • Admin Panel
         </p>
       </div>
