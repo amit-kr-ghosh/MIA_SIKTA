@@ -1,13 +1,22 @@
 import { motion } from 'framer-motion';
-import { Calendar, FileText, AlertCircle, Bell } from 'lucide-react';
+import { useState } from 'react';
+import {
+  Calendar,
+  FileText,
+  AlertCircle,
+  Bell,
+  ChevronDown,
+} from 'lucide-react';
 
 const Notices = () => {
+  const [expanded, setExpanded] = useState<number | null>(null);
+
   const notices = [
     {
       date: '2025-01-10',
-      title: 'Admissions Open for Session 2025-2026',
+      title: 'Admissions Open for Session 2025–2026',
       description:
-        'Admissions are now open for all classes. Parents are requested to complete the online application form at the earliest.',
+        'Admissions are now open for all classes. Parents are requested to complete the online application form at the earliest to secure admission.',
       type: 'important',
       icon: AlertCircle,
     },
@@ -15,7 +24,7 @@ const Notices = () => {
       date: '2025-01-08',
       title: 'Annual Sports Day',
       description:
-        'Annual Sports Day will be held on January 25, 2025. All students are required to participate.',
+        'Annual Sports Day will be held on January 25, 2025. All students are required to participate and be present in proper sports uniform.',
       type: 'event',
       icon: Calendar,
     },
@@ -23,7 +32,7 @@ const Notices = () => {
       date: '2025-01-05',
       title: 'Parent-Teacher Meeting',
       description:
-        'PTM scheduled for January 20, 2025. Parents are requested to meet class teachers to discuss student progress.',
+        'PTM scheduled for January 20, 2025. Parents are requested to meet class teachers to discuss academic progress and overall development.',
       type: 'meeting',
       icon: Bell,
     },
@@ -31,146 +40,177 @@ const Notices = () => {
       date: '2025-01-03',
       title: 'Winter Break Schedule',
       description:
-        'School will remain closed from January 15-22 for winter break. Classes will resume on January 23.',
+        'School will remain closed from January 15–22 for winter break. Classes will resume on January 23 as per the regular timetable.',
       type: 'holiday',
       icon: FileText,
     },
-    {
-      date: '2024-12-28',
-      title: 'Science Exhibition',
-      description:
-        'Annual Science Exhibition will be held on February 5, 2025. Students are encouraged to prepare innovative projects.',
-      type: 'event',
-      icon: Calendar,
-    },
-    {
-      date: '2024-12-25',
-      title: 'Fee Payment Reminder',
-      description:
-        'Last date for fee payment for Q4 is January 15, 2025. Late fee will be applicable after the due date.',
-      type: 'important',
-      icon: AlertCircle,
-    },
   ];
 
-  const getTypeColor = (type: string) => {
+  const stylesByType = (type: string) => {
     switch (type) {
       case 'important':
-        return 'from-red-500 to-red-600';
+        return {
+          bg: 'bg-rose-50',
+          accent: 'from-rose-500 to-red-600',
+          badge: 'bg-rose-600',
+        };
       case 'event':
-        return 'from-primary-600 to-teal-600';
+        return {
+          bg: 'bg-indigo-50',
+          accent: 'from-indigo-500 to-teal-500',
+          badge: 'bg-indigo-600',
+        };
       case 'meeting':
-        return 'from-yellow-500 to-yellow-600';
+        return {
+          bg: 'bg-amber-50',
+          accent: 'from-amber-400 to-yellow-500',
+          badge: 'bg-amber-500',
+        };
       case 'holiday':
-        return 'from-teal-500 to-teal-600';
+        return {
+          bg: 'bg-teal-50',
+          accent: 'from-teal-500 to-emerald-500',
+          badge: 'bg-teal-600',
+        };
       default:
-        return 'from-gray-500 to-gray-600';
+        return {
+          bg: 'bg-gray-50',
+          accent: 'from-gray-400 to-gray-500',
+          badge: 'bg-gray-500',
+        };
     }
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
+  const formatDate = (date: string) =>
+    new Date(date).toLocaleDateString('en-IN', {
       day: 'numeric',
+      month: 'short',
+      year: 'numeric',
     });
-  };
 
   return (
-    <div>
-      <section className="bg-gradient-to-br from-primary-600 to-teal-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">Notice Board</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Stay updated with the latest announcements and important dates
-            </p>
-          </motion.div>
+    <div className="bg-white">
+
+      {/* HERO */}
+      <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-700 text-white py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-3xl sm:text-5xl font-extrabold mb-3">
+            Notice Board
+          </h1>
+          <p className="text-sm sm:text-xl text-indigo-100 max-w-3xl mx-auto">
+            Important updates, events & announcements
+          </p>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-6">
-            {notices.map((notice, index) => (
+      {/* NOTICES */}
+      <section className="py-10 sm:py-16">
+        <div className="max-w-4xl mx-auto px-4 space-y-4 sm:space-y-6">
+          {notices.map((notice, index) => {
+            const styles = stylesByType(notice.type);
+            const isOpen = expanded === index;
+
+            return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow border-l-4 border-primary-600"
+                className="relative"
               >
-                <div className="flex items-start space-x-4">
-                  <div
-                    className={`bg-gradient-to-br ${getTypeColor(
-                      notice.type
-                    )} w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0`}
-                  >
-                    <notice.icon className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-semibold text-gray-500 flex items-center">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        {formatDate(notice.date)}
-                      </span>
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-semibold text-white capitalize ${
-                          notice.type === 'important'
-                            ? 'bg-red-500'
-                            : notice.type === 'event'
-                            ? 'bg-primary-600'
-                            : notice.type === 'meeting'
-                            ? 'bg-yellow-500'
-                            : 'bg-teal-500'
+                {/* Accent bar */}
+                <div
+                  className={`absolute left-0 top-0 h-full w-1.5 rounded-l-2xl bg-gradient-to-b ${styles.accent}`}
+                />
+
+                {/* Card */}
+                <div
+                  className={`
+                    ${styles.bg}
+                    ml-1.5
+                    rounded-2xl
+                    p-4 sm:p-6
+                    shadow-sm hover:shadow-md
+                    transition
+                    flex flex-col
+                    min-h-[145px] sm:min-h-[175px]
+                  `}
+                >
+                  <div className="flex items-start gap-4">
+                    {/* Icon */}
+                    <div
+                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${styles.accent} flex items-center justify-center flex-shrink-0`}
+                    >
+                      <notice.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <span className="text-xs text-gray-500 flex items-center">
+                          <Calendar className="w-4 h-4 mr-1" />
+                          {formatDate(notice.date)}
+                        </span>
+                        <span
+                          className={`px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold text-white ${styles.badge}`}
+                        >
+                          {notice.type}
+                        </span>
+                      </div>
+
+                      <h3 className="text-sm sm:text-lg font-bold text-gray-900 mb-1">
+                        {notice.title}
+                      </h3>
+
+                      <p
+                        className={`text-sm text-gray-700 leading-relaxed ${
+                          isOpen ? '' : 'line-clamp-2'
                         }`}
                       >
-                        {notice.type}
-                      </span>
+                        {notice.description}
+                      </p>
+
+                      {/* Read more */}
+                      <button
+                        onClick={() =>
+                          setExpanded(isOpen ? null : index)
+                        }
+                        className="mt-2 text-indigo-600 text-xs sm:text-sm font-semibold flex items-center gap-1 hover:underline"
+                      >
+                        {isOpen ? 'Read less' : 'Read more'}
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform ${
+                            isOpen ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {notice.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {notice.description}
-                    </p>
                   </div>
                 </div>
               </motion.div>
-            ))}
+            );
+          })}
+        </div>
+      </section>
+
+      {/* SUBSCRIBE */}
+      <section className="py-14 sm:py-20 bg-gradient-to-br from-indigo-50 to-teal-50">
+        <div className="max-w-xl mx-auto px-4 text-center">
+          <div className="bg-white rounded-3xl shadow-lg p-6 sm:p-8">
+            <Bell className="w-10 h-10 text-indigo-600 mx-auto mb-4" />
+            <h2 className="text-lg sm:text-2xl font-bold mb-2">
+              Stay Connected
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 mb-5">
+              Subscribe to receive important notices directly.
+            </p>
+            <button className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-teal-600 text-white rounded-xl font-semibold hover:shadow-lg transition">
+              Subscribe
+            </button>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <Bell className="h-12 w-12 text-primary-600 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Stay Connected
-              </h2>
-              <p className="text-gray-600 mb-6">
-                Want to receive notices directly to your email? Subscribe to our
-                notification service.
-              </p>
-              <button className="px-8 py-3 bg-gradient-to-r from-primary-600 to-teal-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-200">
-                Subscribe to Notifications
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 };

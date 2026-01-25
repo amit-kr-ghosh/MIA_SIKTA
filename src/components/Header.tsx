@@ -31,7 +31,7 @@ const Header = () => {
             className="flex items-center gap-2 sm:gap-3 min-w-0 max-w-[85%]"
           >
             <img
-              src="/images/logo1.png"
+              src="/images/logo/logo1.png"
               alt="MIA Logo"
               className="h-12 w-12 sm:h-14 sm:w-14 lg:h-18 lg:w-18 object-contain flex-shrink-0"
             />

@@ -154,7 +154,7 @@ const Home = () => {
             className="flex justify-center"
           >
             <img
-              src="/images/hero3.gif"
+              src="/images/home/hero3.gif"
               alt="Happy Students"
               className="
           w-[100%]  sm:w-[100%]
@@ -169,36 +169,34 @@ const Home = () => {
 
       {/* ⭐ WHY PARENTS CHOOSE US */}
       <section className="py-12 sm:py-20 px-4">
-        <h2 className="text-center text-3xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-10">
-          Why Parents Choose Us
-        </h2>
+  <h2 className="text-center text-3xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-10">
+    Why Parents Choose Us
+  </h2>
 
-        {/* MOBILE TUNED ONLY */}
-        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-          {features.map((f, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="bg-gradient-to-br from-gray-100 to-gray-200 p-4 sm:p-8 rounded-xl sm:rounded-2xl shadow-inner hover:shadow-xl transition text-center border"
-            >
-              <div
-                className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${f.color} rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-md`}
-              >
-                <f.icon className="text-white" size={22} />
-              </div>
-              <h3 className="text-sm sm:text-xl font-semibold text-gray-900">
-                {f.title}
-              </h3>
-              <p className="text-xs sm:text-base text-gray-700 mt-1 sm:mt-2 leading-snug sm:leading-relaxed">
-                {f.description}
-              </p>
-            </motion.div>
-          ))}
+  <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+    {features.map((f, index) => (
+      <motion.div
+        key={index}
+        whileHover={{ scale: 1.05 }}
+        className="bg-gradient-to-br from-gray-100 to-gray-200 p-4 sm:p-8 rounded-xl sm:rounded-2xl shadow-inner hover:shadow-xl transition text-center border"
+      >
+        <div
+          className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${f.color} rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-md`}
+        >
+          <f.icon className="text-white" size={22} />
         </div>
-      </section>
+
+        <h3 className="text-sm sm:text-xl font-semibold text-gray-900">
+          {f.title}
+        </h3>
+        <p className="text-xs sm:text-base text-gray-700 mt-1 sm:mt-2 leading-snug sm:leading-relaxed">
+          {f.description}
+        </p>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
 
       {/* Spotlight */}
       <Spotlight />
@@ -297,66 +295,91 @@ const Home = () => {
       </section>
 
       {/* 💬 TESTIMONIALS */}
-      <section className="py-20 bg-white px-4">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 text-center mb-4">
-          What Parents Say
-        </h2>
-        <p className="text-gray-600 text-base sm:text-lg mb-12 max-w-2xl mx-auto text-center">
-          Their experience. Their trust. Their words.
-        </p>
+      <section className="py-24 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              What Parents Say
+            </h2>
+            <p className="mt-4 text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
+              Trusted by families who value growth, care, and character.
+            </p>
+          </div>
 
-        <div className="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory scrollbar-hide max-w-7xl mx-auto">
-          {[
-            {
-              name: "Rohit Sharma",
-              message:
-                "MIA has been a blessing. My child has grown emotionally, academically and spiritually.",
-            },
-            {
-              name: "Anjali Verma",
-              message:
-                "The perfect balance of values, discipline and love. Feels like a second home.",
-            },
-            {
-              name: "S. Khanna",
-              message:
-                "We are grateful for the confidence and leadership qualities built here.",
-            },
-          ].map((t, i) => (
-            <div
-              key={i}
-              className="
-          snap-start min-w-[100%] sm:min-w-[360px]
-          rounded-3xl p-[2px]
-          bg-gradient-to-br from-orange-400 via-pink-400 to-yellow-400
-          shadow-lg hover:shadow-2xl transition-all duration-300
-        "
-            >
-              <div className="bg-white rounded-3xl p-6 h-full">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 flex items-center justify-center text-white font-bold text-lg shadow-md">
-                    {t.name.charAt(0)}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900">{t.name}</h3>
-                    <span className="text-yellow-500 text-sm tracking-wide">
-                      ★★★★★
-                    </span>
-                  </div>
-                </div>
+          {/* Container */}
+          <div
+            className="
+        flex gap-6
+        overflow-x-auto md:overflow-visible
+        md:grid md:grid-cols-3
+        snap-x snap-mandatory md:snap-none
+        pb-4 md:pb-0
+        scrollbar-hide
+      "
+          >
+            {[
+              {
+                name: "Rohit Sharma",
+                role: "Parent · Grade 4",
+                message:
+                  "MIA has helped my child grow with confidence and curiosity. The care shown by teachers truly stands out.",
+              },
+              {
+                name: "Anjali Verma",
+                role: "Parent · Grade 2",
+                message:
+                  "The environment is warm yet disciplined. My child feels safe, valued, and motivated every day.",
+              },
+              {
+                name: "S. Khanna",
+                role: "Parent · Senior Wing",
+                message:
+                  "We’ve seen a noticeable improvement in leadership and communication skills. A wonderful institution.",
+              },
+            ].map((t, i) => (
+              <article
+                key={i}
+                className="
+            snap-center
+            min-w-[88%] sm:min-w-[70%] md:min-w-0
+            bg-orange-50/40
+            rounded-2xl
+            p-7
+            border border-orange-100
+            hover:shadow-lg
+            transition-all duration-300
+          "
+              >
+                {/* Stars */}
+                <div className="text-yellow-500 text-sm mb-4">★★★★★</div>
 
-                <p className="text-gray-700 text-[16px] leading-relaxed italic">
+                {/* Message */}
+                <p className="text-gray-700 text-[15.5px] leading-relaxed mb-6">
                   “{t.message}”
                 </p>
-              </div>
-            </div>
-          ))}
-        </div>
 
-        <div className="flex justify-center mt-8 gap-2">
-          <div className="w-3 h-3 bg-orange-500 rounded-full" />
-          <div className="w-3 h-3 bg-orange-300 rounded-full" />
-          <div className="w-3 h-3 bg-orange-200 rounded-full" />
+                {/* Author */}
+                <div className="flex items-center gap-4 pt-4 border-t border-orange-100/70">
+                  <div className="w-11 h-11 rounded-full bg-orange-500/90 flex items-center justify-center text-white font-semibold">
+                    {t.name.charAt(0)}
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">
+                      {t.name}
+                    </h4>
+                    <p className="text-xs text-gray-500">{t.role}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Mobile hint */}
+          <p className="text-center text-xs text-gray-400 mt-6 md:hidden">
+            Swipe sideways to read more
+          </p>
         </div>
       </section>
 

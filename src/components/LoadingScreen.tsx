@@ -16,7 +16,7 @@ const LoadingScreen = ({ isLoading }: { isLoading: boolean }) => {
         >
           {/* LOGO */}
           <motion.img
-            src="/images/logo1.png"
+            src="/images/logo/logo.png"
             alt="Loading"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}

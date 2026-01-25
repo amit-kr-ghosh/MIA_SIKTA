@@ -25,7 +25,7 @@ const Footer = () => {
             <div className="flex items-center gap-3">
               <div className="p-2 rounded-2xl bg-white shadow-lg">
                 <img
-                  src="/images/logo.png"
+                  src="/images/logo/logo.png"
                   alt="MIA Logo"
                   className="h-12 w-12 object-contain"
                 />

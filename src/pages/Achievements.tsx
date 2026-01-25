@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Trophy, Award, Medal, Star } from 'lucide-react';
 
 const Achievements = () => {
@@ -8,203 +7,185 @@ const Achievements = () => {
       title: 'National Science Olympiad',
       description: 'Gold Medal - Aarav Sharma, Class X',
       icon: Trophy,
-      color: 'from-yellow-500 to-yellow-600',
+      color: 'from-yellow-400 to-yellow-500',
     },
     {
       year: '2024',
       title: 'Inter-School Debate Championship',
       description: 'First Prize - Priya Patel, Class XII',
       icon: Award,
-      color: 'from-primary-600 to-teal-600',
+      color: 'from-indigo-500 to-teal-500',
     },
     {
       year: '2023',
       title: 'State Level Mathematics Competition',
       description: 'Silver Medal - Rohan Verma, Class IX',
       icon: Medal,
-      color: 'from-gray-400 to-gray-500',
+      color: 'from-gray-300 to-gray-400',
     },
     {
       year: '2023',
       title: 'All India Painting Contest',
       description: 'First Prize - Ananya Singh, Class VII',
       icon: Star,
-      color: 'from-pink-500 to-purple-600',
+      color: 'from-pink-400 to-rose-500',
     },
     {
       year: '2023',
       title: 'District Cricket Championship',
       description: 'Winners - School Cricket Team',
       icon: Trophy,
-      color: 'from-teal-500 to-teal-600',
+      color: 'from-teal-400 to-teal-500',
     },
     {
       year: '2022',
       title: 'CBSE Academic Excellence',
       description: '100% Pass Rate in Class XII Boards',
       icon: Award,
-      color: 'from-primary-600 to-blue-700',
+      color: 'from-indigo-500 to-blue-600',
     },
     {
       year: '2022',
       title: 'International Robotics Challenge',
       description: 'Bronze Medal - Robotics Club Team',
       icon: Medal,
-      color: 'from-orange-600 to-red-600',
+      color: 'from-orange-400 to-orange-500',
     },
     {
       year: '2022',
       title: 'State Dance Competition',
       description: 'Best Performance - School Dance Troupe',
       icon: Star,
-      color: 'from-yellow-500 to-yellow-600',
+      color: 'from-yellow-400 to-amber-500',
     },
   ];
 
   const stats = [
-    { number: '100%', label: 'Board Exam Pass Rate', color: 'bg-primary-600' },
+    { number: '100%', label: 'Board Exam Pass Rate', color: 'bg-indigo-600' },
     { number: '250+', label: 'Awards Won', color: 'bg-teal-600' },
-    { number: '50+', label: 'National Level Participants', color: 'bg-yellow-500' },
-    { number: '15+', label: 'Years of Excellence', color: 'bg-pink-600' },
+    { number: '50+', label: 'National Level Participants', color: 'bg-yellow-600' },
+    { number: '15+', label: 'Years of Excellence', color: 'bg-rose-600' },
   ];
 
   return (
-    <div>
-      <section className="bg-gradient-to-br from-primary-600 to-teal-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">Achievements</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Celebrating our students' success and excellence
-            </p>
-          </motion.div>
+    <div className="bg-white">
+
+      {/* ================= HERO ================= */}
+      <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-700 text-white py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-3xl sm:text-5xl font-extrabold mb-4">
+            Achievements
+          </h1>
+          <p className="text-sm sm:text-xl text-indigo-100 max-w-3xl mx-auto">
+            Celebrating excellence, dedication, and success
+          </p>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+      {/* ================= STATS ================= */}
+      <section className="py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
             {stats.map((stat, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className={`${stat.color} text-white rounded-2xl p-6 text-center shadow-lg`}
+                className={`${stat.color} text-white rounded-2xl p-4 sm:p-6 text-center shadow-md`}
               >
-                <div className="text-3xl sm:text-4xl font-bold mb-2">
+                <div className="text-2xl sm:text-4xl font-bold mb-1">
                   {stat.number}
                 </div>
-                <div className="text-sm sm:text-base opacity-90">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Recent Achievements
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our students continue to excel in academics, sports, and co-curricular
-              activities
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {achievements.map((achievement, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow border border-gray-100"
-              >
-                <div className="flex items-start space-x-4">
-                  <div
-                    className={`bg-gradient-to-br ${achievement.color} w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0`}
-                  >
-                    <achievement.icon className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-semibold text-gray-500">
-                        {achievement.year}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">
-                      {achievement.title}
-                    </h3>
-                    <p className="text-gray-600">{achievement.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-br from-blue-50 to-teal-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <img
-                src="https://images.pexels.com/photos/5905713/pexels-photo-5905713.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Award ceremony"
-                className="rounded-2xl shadow-xl"
-              />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                Building Champions
-              </h2>
-              <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                At Mothers International Academy, we believe in nurturing talent and
-                encouraging students to reach their full potential. Our comprehensive
-                approach to education goes beyond textbooks.
-              </p>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Through dedicated coaching, modern facilities, and continuous support,
-                we help our students excel in academics, sports, arts, and various
-                competitions at local, state, national, and international levels.
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
-                  <p className="text-gray-700">Expert guidance and mentorship</p>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-teal-600 rounded-full"></div>
-                  <p className="text-gray-700">Regular competitions and exhibitions</p>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                  <p className="text-gray-700">Recognition and awards ceremonies</p>
+                <div className="text-xs sm:text-base opacity-90">
+                  {stat.label}
                 </div>
               </div>
-            </motion.div>
+            ))}
+          </div>
+
+          {/* ================= RECENT ================= */}
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-3">
+              Recent Achievements
+            </h2>
+            <p className="text-sm sm:text-lg text-gray-600 max-w-2xl mx-auto">
+              Our students continue to shine in academics, sports, and co-curricular activities
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            {achievements.map((achievement, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition p-4 sm:p-6"
+              >
+                <div className="flex items-start gap-4">
+                  <div
+                    className={`bg-gradient-to-br ${achievement.color} w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center`}
+                  >
+                    <achievement.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
+                  </div>
+
+                  <div>
+                    <span className="text-xs sm:text-sm font-semibold text-gray-500 block mb-1">
+                      {achievement.year}
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1">
+                      {achievement.title}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {achievement.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* ================= BUILDING CHAMPIONS ================= */}
+      <section className="py-14 sm:py-20 bg-gradient-to-br from-indigo-50 via-sky-50 to-teal-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center">
+            <img
+              loading="lazy"
+              src="https://images.pexels.com/photos/5905713/pexels-photo-5905713.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Award ceremony"
+              className="rounded-3xl shadow-lg w-full max-h-[320px] sm:max-h-[420px] object-cover"
+            />
+
+            <div className="text-center lg:text-left">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                Building Champions
+              </h2>
+              <p className="text-sm sm:text-lg text-gray-600 mb-4 leading-relaxed">
+                At Mothers International Academy, we nurture talent and help students
+                achieve excellence beyond academics.
+              </p>
+              <p className="text-sm sm:text-lg text-gray-600 mb-6 leading-relaxed">
+                With expert mentoring, modern facilities, and continuous encouragement,
+                our students thrive at every level.
+              </p>
+
+              <div className="space-y-3 text-sm sm:text-base">
+                {[
+                  'Expert guidance and mentorship',
+                  'Regular competitions and exhibitions',
+                  'Recognition and awards ceremonies',
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center justify-center lg:justify-start gap-3"
+                  >
+                    <div className="w-2 h-2 bg-indigo-600 rounded-full" />
+                    <p className="text-gray-700">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };

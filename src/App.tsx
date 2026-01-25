@@ -30,7 +30,7 @@ const LoadingScreen = ({ loading }: { loading: boolean }) => (
         "
       >
         <motion.img
-          src="/images/logo1.png"
+          src="/images/logo/logo1.png"
           alt="Loading"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -103,22 +103,17 @@ function App() {
               path="/contact"
               element={
                 <Layout>
-                  <section className="bg-gradient-to-br from-primary-600 to-teal-600 text-white py-16">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-center"
-                      >
-                        <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-                          Contact Us
-                        </h1>
-                        <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                          Get in touch with us for any inquiries or assistance
-                        </p>
-                      </motion.div>
-                    </div>
-                  </section>
+                  {/* ================= HERO ================= */}
+                        <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-700 text-white py-14 sm:py-20">
+                          <div className="max-w-7xl mx-auto px-4 text-center">
+                            <h1 className="text-3xl sm:text-5xl font-extrabold mb-3">
+                              Contact Us
+                            </h1>
+                            <p className="text-sm sm:text-xl text-indigo-100 max-w-3xl mx-auto">
+                              We’re here to help. Reach out to us anytime.
+                            </p>
+                          </div>
+                        </section>
                   <Contact />
                 </Layout>
               }

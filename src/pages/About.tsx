@@ -1,216 +1,182 @@
 import { motion } from 'framer-motion';
-import { Target, Eye, Heart, Award } from 'lucide-react';
+import { Target, Eye, Heart, Award, Quote } from 'lucide-react';
 
 const About = () => {
   return (
-    <div>
-      <section className="bg-gradient-to-br from-primary-600 to-teal-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">About Us</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Learn about our journey, values, and commitment to educational excellence
+    <div className="overflow-x-hidden bg-white">
+
+      {/* ================= HERO ================= */}
+      <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-800 text-white py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="text-yellow-400 font-semibold tracking-wide">
+              Mother’s International Academy
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-bold mt-2 mb-4">
+              About Our School
+            </h1>
+            <p className="text-indigo-100 max-w-3xl mx-auto text-base sm:text-xl">
+              Shaping minds, nurturing values, and preparing leaders for life
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
+      {/* ================= OUR STORY ================= */}
+      <section className="py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.img
+            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            viewport={{ once: true }}
+            src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg"
+            alt="School Campus"
+            className="rounded-2xl shadow-xl"
+          />
+
+          <motion.div whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 20 }}>
+            <h2 className="text-2xl sm:text-3xl font-bold text-indigo-900 mb-4">
+              Our Journey
+            </h2>
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              Established in 2012, Mother’s International Academy was founded to
+              meet the need for quality and value-based education in West
+              Champaran, Bihar.
+            </p>
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              We believe education is not only about academics, but about
+              developing character, leadership, creativity, and a global
+              outlook.
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              Located in the green surroundings of Bhawra near Army Cantonment
+              Sikta, our campus offers a safe, peaceful, and pollution-free
+              environment for holistic learning.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= MISSION & VISION ================= */}
+      <section className="py-14 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white rounded-2xl p-7 shadow-md border-l-4 border-indigo-700">
+            <Target className="text-indigo-700 w-8 h-8 mb-3" />
+            <h3 className="text-xl font-bold mb-2">Our Mission</h3>
+            <p className="text-gray-600 leading-relaxed">
+              To provide a strong intellectual, emotional, and moral foundation
+              through innovative teaching, smart technology, and value-based
+              education.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl p-7 shadow-md border-l-4 border-teal-600">
+            <Eye className="text-teal-600 w-8 h-8 mb-3" />
+            <h3 className="text-xl font-bold mb-2">Our Vision</h3>
+            <p className="text-gray-600 leading-relaxed">
+              To nurture confident, joyful, and responsible learners who become
+              leaders, peace builders, and contributors to society.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= PRINCIPAL MESSAGE ================= */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-indigo-50 to-teal-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-4xl font-bold text-center text-indigo-900 mb-12">
+            From the Principal’s Desk
+          </h2>
+
+          <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-10 relative">
+            <Quote className="absolute -top-5 left-6 w-10 h-10 text-yellow-400" />
+
+            <div className="flex flex-col sm:flex-row items-center gap-6 mb-6">
               <img
-                src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="School building"
-                className="rounded-2xl shadow-xl"
+                src="images/logo/logo.png"
+                alt="Principal"
+                className="w-28 h-28 rounded-full object-cover border-4 border-indigo-800 shadow-md"
               />
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                Established in 1985, Mothers International Academy has been a beacon
-                of educational excellence for over three decades. What started as a
-                small initiative has grown into one of the most respected CBSE +2
-                schools in the region.
-              </p>
-              <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                Our journey has been marked by continuous growth, innovation, and an
-                unwavering commitment to nurturing young minds. We believe in
-                providing not just education, but a holistic learning experience that
-                prepares students for life's challenges.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Today, we take pride in our state-of-the-art infrastructure,
-                dedicated faculty, and a vibrant community of learners who carry
-                forward our legacy of excellence.
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-blue-50 to-teal-50 p-8 rounded-xl"
-            >
-              <div className="bg-primary-600 w-14 h-14 rounded-lg flex items-center justify-center mb-4">
-                <Target className="h-7 w-7 text-white" />
+              <div className="text-center sm:text-left">
+                <h3 className="text-xl font-bold text-indigo-900">
+                  Principal
+                </h3>
+                <p className="text-gray-600">
+                  Mother’s International Academy
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
-              <p className="text-gray-600 leading-relaxed">
-                To provide quality education that empowers students with knowledge,
-                skills, and values necessary to excel in academics and become
-                responsible citizens who contribute positively to society.
-              </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-gradient-to-br from-teal-50 to-blue-50 p-8 rounded-xl"
-            >
-              <div className="bg-teal-600 w-14 h-14 rounded-lg flex items-center justify-center mb-4">
-                <Eye className="h-7 w-7 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
-              <p className="text-gray-600 leading-relaxed">
-                To be recognized as a leading educational institution that nurtures
-                future leaders through innovative teaching methods, character
-                development, and a commitment to excellence in all endeavors.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Principal's Message
-            </h2>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-2xl shadow-lg p-8 md:p-12"
-            >
-              <div className="flex flex-col md:flex-row gap-8 items-center mb-8">
-                <img
-                  src="https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg?auto=compress&cs=tinysrgb&w=400"
-                  alt="Principal"
-                  className="w-32 h-32 rounded-full object-cover shadow-lg"
-                />
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-1">
-                    Dr. Priya Sharma
-                  </h3>
-                  <p className="text-gray-600">Principal</p>
-                </div>
-              </div>
-              <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                Dear Parents and Students,
-              </p>
-              <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                It gives me immense pleasure to welcome you to Mothers International
-                Academy. Our school stands as a testament to the belief that
-                education is not merely about academic achievement, but about
-                nurturing well-rounded individuals.
-              </p>
-              <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                We are committed to providing an environment where every child can
-                discover their potential, develop their talents, and grow into
-                confident, compassionate individuals. Our dedicated faculty, modern
-                facilities, and proven methodologies ensure that your child receives
-                the best education possible.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                I invite you to be part of our journey in shaping the future, one
-                student at a time.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Our Core Values
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              The principles that guide everything we do
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              At Mother’s International Academy, we believe that education is a
+              partnership between the school and the family. Together, we shape
+              not only academic success but strong character and values.
             </p>
-          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              Our goal is to help every child discover their potential, develop
+              confidence, and grow into a responsible, compassionate, and
+              capable citizen of the world.
+            </p>
+
+            <p className="text-indigo-900 font-semibold mt-6">
+              “Education with a difference — to make a difference.”
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CORE VALUES ================= */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-4xl font-bold text-center text-indigo-900 mb-12">
+            Our Core Values
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {[
               {
                 icon: Heart,
-                title: 'Integrity',
-                description: 'Upholding honesty and strong moral principles',
+                title: 'Integrity & Care',
+                desc: 'Honesty, compassion, equality, and respect for all',
+                bg: 'from-pink-500 to-rose-500',
               },
               {
                 icon: Award,
                 title: 'Excellence',
-                description: 'Striving for the highest standards in all we do',
+                desc: 'Commitment to academic, personal, and moral excellence',
+                bg: 'from-yellow-400 to-orange-500',
               },
               {
                 icon: Target,
-                title: 'Innovation',
-                description: 'Embracing new ideas and creative thinking',
+                title: 'Leadership & Innovation',
+                desc: 'Responsibility, creativity, teamwork, and initiative',
+                bg: 'from-indigo-600 to-teal-600',
               },
-            ].map((value, index) => (
+            ].map((v, i) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center p-8 bg-gradient-to-br from-blue-50 to-teal-50 rounded-xl"
+                key={i}
+                whileHover={{ y: -6 }}
+                className="bg-white rounded-3xl shadow-lg p-7 text-center transition"
               >
-                <div className="bg-gradient-to-br from-primary-600 to-teal-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="h-8 w-8 text-white" />
+                <div
+                  className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br ${v.bg} flex items-center justify-center shadow-md`}
+                >
+                  <v.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {value.title}
+                <h3 className="font-bold text-lg text-indigo-900 mb-2">
+                  {v.title}
                 </h3>
-                <p className="text-gray-600">{value.description}</p>
+                <p className="text-gray-600 text-sm">
+                  {v.desc}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
     </div>
   );
 };

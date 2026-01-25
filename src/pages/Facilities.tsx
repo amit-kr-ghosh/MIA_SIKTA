@@ -16,211 +16,204 @@ const Facilities = () => {
       icon: BookOpen,
       title: 'Library',
       description:
-        'Well-stocked library with over 10,000 books, digital resources, and quiet reading areas for students.',
-      image: 'https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'Well-stocked library with over 10,000 books, digital resources, and calm reading zones.',
+      image:
+        'https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      gradient: 'from-indigo-500 to-purple-500',
     },
     {
       icon: Beaker,
-      title: 'Science Laboratories',
+      title: 'Science Labs',
       description:
-        'Modern labs for Physics, Chemistry, and Biology with latest equipment for hands-on learning.',
-      image: 'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'Advanced Physics, Chemistry, and Biology labs for hands-on experimentation.',
+      image:
+        'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      gradient: 'from-teal-500 to-emerald-500',
     },
     {
       icon: Monitor,
       title: 'Computer Lab',
       description:
-        'State-of-the-art computer lab with high-speed internet and latest software for digital literacy.',
-      image: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'High-speed internet, modern systems, and the latest educational software.',
+      image:
+        'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      gradient: 'from-sky-500 to-blue-600',
     },
     {
       icon: Dumbbell,
       title: 'Sports Complex',
       description:
-        'Indoor and outdoor sports facilities including basketball, badminton, cricket, and athletics.',
-      image: 'https://images.pexels.com/photos/461049/pexels-photo-461049.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'Indoor & outdoor sports facilities supporting fitness and teamwork.',
+      image:
+        'https://images.pexels.com/photos/461049/pexels-photo-461049.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      gradient: 'from-orange-500 to-amber-500',
     },
     {
       icon: Music,
-      title: 'Arts & Music Room',
+      title: 'Arts & Music',
       description:
-        'Dedicated spaces for music, dance, and arts with instruments and materials for creative expression.',
-      image: 'https://images.pexels.com/photos/8192069/pexels-photo-8192069.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'Creative spaces for music, dance, and visual arts development.',
+      image:
+        'https://images.pexels.com/photos/8382271/pexels-photo-8382271.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      gradient: 'from-pink-500 to-rose-500',
     },
     {
       icon: Bus,
       title: 'Transportation',
       description:
-        'Safe and reliable school bus service covering all major routes with GPS tracking and attendants.',
-      image: 'https://images.pexels.com/photos/5905713/pexels-photo-5905713.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'GPS-enabled buses with trained staff ensuring student safety.',
+      image:
+        'https://images.pexels.com/photos/5905713/pexels-photo-5905713.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      gradient: 'from-lime-500 to-green-600',
     },
     {
       icon: Shield,
       title: 'Safety & Security',
       description:
-        '24/7 CCTV surveillance, trained security personnel, and fire safety systems throughout the campus.',
-      image: 'https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=800',
+        '24/7 CCTV surveillance and trained security personnel.',
+      image:
+        'https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      gradient: 'from-red-500 to-rose-600',
     },
     {
       icon: Utensils,
       title: 'Cafeteria',
       description:
-        'Hygienic cafeteria serving nutritious meals and snacks prepared with quality ingredients.',
-      image: 'https://images.pexels.com/photos/2159065/pexels-photo-2159065.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'Nutritious, hygienic meals prepared with quality ingredients.',
+      image:
+        'https://images.pexels.com/photos/2159065/pexels-photo-2159065.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      gradient: 'from-yellow-400 to-orange-500',
     },
   ];
 
   return (
-    <div>
-      <section className="bg-gradient-to-br from-primary-600 to-teal-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center"
+    <div className="bg-white">
+
+      {/* HERO */}
+      <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-800 text-white py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-5xl font-extrabold mb-4"
           >
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">Facilities</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              World-class infrastructure designed to enhance the learning experience
-            </p>
-          </motion.div>
+            Our World-Class Facilities
+          </motion.h1>
+          <p className="text-sm sm:text-xl text-indigo-100 max-w-3xl mx-auto">
+            Designed to inspire curiosity, creativity, and confidence
+          </p>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {facilities.map((facility, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+      {/* FACILITIES GRID */}
+      <section className="py-12 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4">
+
+          <div
+            className="
+              grid
+              gap-5 sm:gap-10
+              grid-cols-1
+              sm:grid-cols-2
+              lg:grid-cols-3
+              xl:grid-cols-4
+
+              max-sm:grid-flow-col
+              max-sm:auto-cols-[80%]
+              max-sm:overflow-x-auto
+              max-sm:snap-x
+              max-sm:snap-mandatory
+              max-sm:pb-3
+            "
+          >
+            {facilities.map((f, i) => (
+              <div
+                key={i}
+                className="snap-center bg-white rounded-3xl overflow-hidden shadow-md flex flex-col"
               >
-                <div className="relative h-48 overflow-hidden">
+                {/* Image */}
+                <div className="relative aspect-[16/9] sm:aspect-[4/3] overflow-hidden">
                   <img
-                    src={facility.image}
-                    alt={facility.title}
+                    src={f.image}
+                    alt={f.title}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4">
-                    <div className="bg-white w-12 h-12 rounded-lg flex items-center justify-center">
-                      <facility.icon className="h-6 w-6 text-primary-600" />
-                    </div>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                    {facility.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {facility.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Smart Classrooms
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Technology-enabled learning environments
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <img
-                src="https://images.pexels.com/photos/8923166/pexels-photo-8923166.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Smart classroom"
-                className="rounded-2xl shadow-xl"
-              />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="space-y-4">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary-600 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">1</span>
+                {/* Content */}
+                <div className="p-4 sm:p-6 min-h-[150px] sm:min-h-[220px] flex flex-col justify-between">
+                  <div
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${f.gradient} flex items-center justify-center mb-3 sm:mb-4`}
+                  >
+                    <f.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
+
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Interactive Displays
+                    <h3 className="text-base sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
+                      {f.title}
                     </h3>
-                    <p className="text-gray-600">
-                      Large touchscreen displays for engaging multimedia lessons
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-teal-600 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">2</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Digital Content
-                    </h3>
-                    <p className="text-gray-600">
-                      Access to rich educational content and online resources
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-yellow-500 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">3</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Comfortable Seating
-                    </h3>
-                    <p className="text-gray-600">
-                      Ergonomic furniture designed for optimal learning comfort
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary-600 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">4</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Climate Control
-                    </h3>
-                    <p className="text-gray-600">
-                      Air-conditioned classrooms for comfortable learning year-round
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                      {f.description}
                     </p>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            ))}
+          </div>
+
+          <p className="mt-4 text-center text-xs text-gray-400 sm:hidden">
+            Swipe to explore →
+          </p>
+        </div>
+      </section>
+
+      {/* SMART CLASSROOMS */}
+      <section className="py-14 sm:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-8 sm:mb-14">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+              Smart Classrooms
+            </h2>
+            <p className="text-sm sm:text-lg text-gray-600 max-w-2xl mx-auto">
+              Modern learning spaces designed for engagement and comfort
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <img
+              loading="lazy"
+              src="https://images.pexels.com/photos/5212700/pexels-photo-5212700.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Smart classroom"
+              className="rounded-3xl shadow-lg w-full max-h-[320px] sm:max-h-[420px] object-cover"
+            />
+
+            <div className="space-y-4 sm:space-y-6 text-center lg:text-left">
+              {[
+                'Interactive digital smart boards',
+                'High-quality audio-visual learning aids',
+                'Comfortable ergonomic seating',
+                'Fully air-conditioned classrooms',
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start lg:items-center gap-3 sm:gap-4 justify-center lg:justify-start"
+                >
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">
+                    {idx + 1}
+                  </div>
+                  <p className="text-sm sm:text-lg text-gray-700">
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 };
