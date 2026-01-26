@@ -1,10 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, Bell } from "lucide-react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { supabase } from "../lib/supabaseClient";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [noticeCount, setNoticeCount] = useState(0);
   const location = useLocation();
 
   const navLinks = [
@@ -14,11 +16,23 @@ const Header = () => {
     { name: "Facilities", path: "/facilities" },
     { name: "Gallery", path: "/gallery" },
     { name: "Achievements", path: "/achievements" },
-    { name: "Notices", path: "/notices" },
     { name: "Contact", path: "/contact" },
   ];
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path: string) => location.pathname === path;
+
+  /* 🔔 FETCH NOTICE COUNT */
+  useEffect(() => {
+    const fetchNoticeCount = async () => {
+      const { count } = await supabase
+        .from("notices")
+        .select("*", { count: "exact", head: true });
+
+      setNoticeCount(count || 0);
+    };
+
+    fetchNoticeCount();
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
@@ -58,21 +72,69 @@ const Header = () => {
               </Link>
             ))}
 
+            {/* 🔔 NOTICE BELL (DESKTOP) */}
+            <Link
+              to="/notices"
+              className="relative p-2 rounded-lg hover:bg-gray-100 transition"
+            >
+              <Bell className="w-5 h-5 text-gray-700" />
+              {noticeCount > 0 && (
+                <span
+                  className="
+                    absolute -top-1 -right-1
+                    bg-red-500 text-white
+                    text-[10px] font-bold
+                    w-5 h-5 rounded-full
+                    flex items-center justify-center
+                    animate-pulse
+                  "
+                >
+                  {noticeCount}
+                </span>
+              )}
+            </Link>
+
+            {/* APPLY CTA */}
             <Link
               to="/admissions"
-              className="ml-4 px-6 py-2 font-bold rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg animate-pulse"
+              className="ml-4 px-5 py-3 font-bold rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg animate-pulse"
             >
-              Apply Now !
+              Apply Now
             </Link>
           </nav>
 
-          {/* MOBILE BUTTON */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition"
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
+          {/* MOBILE ACTIONS */}
+          <div className="flex items-center gap-2 lg:hidden">
+            {/* 🔔 NOTICE BELL (MOBILE – OUTSIDE HAMBURGER) */}
+            <Link
+              to="/notices"
+              className="relative p-2 rounded-lg hover:bg-gray-100"
+            >
+              <Bell className="w-5 h-5 text-gray-700" />
+              {noticeCount > 0 && (
+                <span
+                  className="
+                    absolute -top-1 -right-1
+                    bg-red-500 text-white
+                    text-[10px] font-bold
+                    w-5 h-5 rounded-full
+                    flex items-center justify-center
+                    animate-pulse
+                  "
+                >
+                  {noticeCount}
+                </span>
+              )}
+            </Link>
+
+            {/* 🍔 HAMBURGER */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-lg hover:bg-gray-100 transition"
+            >
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
         </div>
       </div>
 

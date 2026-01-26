@@ -72,7 +72,7 @@ const Achievements = () => {
     <div className="bg-white">
 
       {/* ================= HERO ================= */}
-       <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-800 text-white py-14 sm:py-20">
+       <section className="bg-gradient-to-br from-indigo-800 via-indigo-700 to-teal-600 text-white py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">
@@ -152,7 +152,7 @@ const Achievements = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center">
             <img
               loading="lazy"
-              src="https://images.pexels.com/photos/5905713/pexels-photo-5905713.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              src="https://images.pexels.com/photos/14363874/pexels-photo-14363874.jpeg?auto=compress&cs=tinysrgb&w=1200"
               alt="Award ceremony"
               className="rounded-3xl shadow-lg w-full max-h-[320px] sm:max-h-[420px] object-cover"
             />

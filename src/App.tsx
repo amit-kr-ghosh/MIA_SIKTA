@@ -28,6 +28,7 @@ import { ContactDetails } from "./admin/pages/ContactDetails";
 import { NoticeDetails } from "./admin/pages/NoticeDetails";
 import { AddNotice } from "./admin/pages/AddNotice";
 import { EditNotice } from "./admin/pages/EditNotice";
+import UpdateAdmissions from "./admin/pages/UpdateAdmissions";
 
 /* ---------------- LOADING SCREEN ---------------- */
 const LoadingScreen = ({ loading }: { loading: boolean }) => (
@@ -106,11 +107,12 @@ function App() {
             <Route path="/notices" element={<Layout><Notices /></Layout>} />
             <Route path="/admissions" element={<Layout><Admissions /></Layout>} />
 
+
             <Route
               path="/contact"
               element={
                 <Layout>
-                  <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-700 text-white py-14 sm:py-20">
+                  <section className="bg-gradient-to-br from-indigo-800 via-indigo-700 to-teal-600 text-white py-14 sm:py-20">
                     <div className="max-w-7xl mx-auto px-4 text-center">
                       <h1 className="text-3xl sm:text-5xl font-extrabold mb-3">
                         Contact Us
@@ -146,6 +148,7 @@ function App() {
               <Route path="notices" element={<NoticeDetails />} />
               <Route path="notices/add" element={<AddNotice />} />
               <Route path="notices/edit/:id" element={<EditNotice />} />
+               <Route path="/admin/update-admission/:id" element={<UpdateAdmissions />} />
             </Route>
           </Routes>
         </>

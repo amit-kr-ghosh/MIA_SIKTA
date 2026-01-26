@@ -46,7 +46,6 @@ const Home = () => {
 
   return (
     <div className="overflow-hidden">
-  {/* ================= HERO SECTION ================= */}
 <section
   className="
     relative
@@ -57,40 +56,13 @@ const Home = () => {
     py-6
     overflow-hidden
     rounded-b-[50px] sm:rounded-b-[100px]
+    bg-gradient-to-b from-[#FFF7E8] via-white to-[#E4FFF6]
   "
 >
-  {/* ===== BACKGROUND IMAGE ===== */}
-  <div className="absolute inset-0 -z-20">
-    <img
-      src="/images/gallery/school-build2.png"
-      alt="Mother’s International Academy Campus"
-      className="
-        w-full h-full
-        object-cover
-        scale-105
-        opacity-40
-      "
-    />
-  </div>
-
-  {/* ===== OVERLAY ===== */}
-  <div
-    className="
-      absolute inset-0
-      -z-10
-      bg-gradient-to-b
-      from-[#FFF7E8]/80
-      via-white/70
-      to-[#E4FFF6]/85
-      backdrop-blur-[1.5px]
-      pointer-events-none
-    "
-  />
-
   {/* ===== MAIN CONTENT ===== */}
   <div className="relative z-10 max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-6 items-center">
 
-    {/* LEFT */}
+    {/* LEFT (UNCHANGED) */}
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
@@ -111,7 +83,7 @@ const Home = () => {
 
       <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
 
-        {/* APPLY */}
+        {/* APPLY (UNCHANGED) */}
         <motion.div
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 1.8, repeat: Infinity }}
@@ -139,29 +111,62 @@ const Home = () => {
 
         <Link
           to="/about"
-          className="border-2 border-gray-300 px-7 py-3 rounded-2xl font-semibold"
+          className="
+            border-2 border-gray-300
+            px-7 py-3 rounded-2xl
+            font-semibold
+            bg-white/70 backdrop-blur
+          "
         >
           Learn More
         </Link>
       </div>
     </motion.div>
 
-    {/* RIGHT */}
+    {/* RIGHT — VIDEO CARD (NEW, REPLACES GIF) */}
     <motion.div
       initial={{ opacity: 0, x: 40 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
-      className="flex justify-center"
+      className="relative flex justify-center"
     >
-      <img
-        src="/images/home/hero3.gif"
-        alt="Happy Students"
-        className="w-full max-h-[260px] sm:max-h-[520px] object-contain drop-shadow-2xl"
-      />
+      {/* Glow */}
+      <div className="absolute -inset-3 bg-gradient-to-r from-orange-400 to-yellow-400 blur-2xl opacity-30 rounded-3xl" />
+
+      <div
+        className="
+          relative
+          w-full
+          rounded-3xl overflow-hidden
+          border border-white/60
+          shadow-2xl
+          bg-white
+        "
+      >
+        <video
+          className="w-full h-[220px] sm:h-[340px] lg:h-[420px] object-cover"
+          autoPlay
+          muted
+          playsInline
+          preload="metadata"
+          poster="/images/gallery/school-build2.png"
+        >
+          {/* 🔥 plays ONCE (no loop) */}
+          <source src="/videos/video.mp4" type="video/mp4" />
+        </video>
+
+        {/* Caption */}
+        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/50 to-transparent p-4">
+          <p className="text-white text-sm font-medium">
+            A glimpse into life at MIA
+          </p>
+        </div>
+      </div>
     </motion.div>
 
   </div>
 </section>
+
 
 
 

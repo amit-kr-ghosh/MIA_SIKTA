@@ -70,7 +70,7 @@ export function EditNotice() {
       alert("Failed to update notice");
     } else {
       // ✅ OPEN NOTICE DETAILS PAGE AFTER SUCCESS
-      navigate(`/admin/notices/${id}`);
+      navigate(`/admin/notices/`);
     }
   }
 

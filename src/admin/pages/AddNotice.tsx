@@ -54,7 +54,7 @@ export function AddNotice() {
     }
 
     // ✅ OPEN NOTICE DETAILS PAGE AFTER SUCCESS
-    navigate(`/admin/notices/${data.id}`);
+    navigate(`/admin/notices/`);
   };
 
   return (

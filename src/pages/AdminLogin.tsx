@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import {
@@ -10,13 +10,33 @@ import {
   EyeOff,
 } from "lucide-react";
 
+const STORAGE_KEY = "admin_login_remember";
+
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [remember, setRemember] = useState(true);
   const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
+  /* ---------------- LOAD SAVED LOGIN ---------------- */
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+
+    try {
+      const parsed = JSON.parse(saved);
+      setEmail(parsed.email || "");
+      setPassword(parsed.password || "");
+      setRemember(true);
+    } catch {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  }, []);
+
+  /* ---------------- LOGIN ---------------- */
   const loginAdmin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -40,15 +60,30 @@ const AdminLogin = () => {
       .eq("user_id", data.user.id)
       .maybeSingle();
 
-    setLoading(false);
-
     if (roleError || roleData?.role !== "admin") {
       await supabase.auth.signOut();
+      localStorage.removeItem(STORAGE_KEY);
+      setLoading(false);
       alert("Access denied. Admin only.");
       return;
     }
 
-    /* 3️⃣ REDIRECT */
+    /* 3️⃣ SAVE LOGIN (OPTIONAL) */
+    if (remember) {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          email,
+          password, // saved ONLY if user opted in
+        })
+      );
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+
+    setLoading(false);
+
+    /* 4️⃣ REDIRECT */
     navigate("/admin/dashboard", { replace: true });
   };
 
@@ -78,7 +113,6 @@ const AdminLogin = () => {
 
         {/* FORM */}
         <form onSubmit={loginAdmin} className="space-y-4">
-
           {/* EMAIL */}
           <div>
             <label className="block text-xs text-neutral-400 mb-1">
@@ -127,10 +161,7 @@ const AdminLogin = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword((v) => !v)}
-                className="
-                  absolute right-3 top-1/2 -translate-y-1/2
-                  text-neutral-400 hover:text-white
-                "
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-white"
               >
                 {showPassword ? (
                   <EyeOff className="w-4 h-4" />
@@ -139,6 +170,17 @@ const AdminLogin = () => {
                 )}
               </button>
             </div>
+          </div>
+
+          {/* REMEMBER ME */}
+          <div className="flex items-center gap-2 text-xs text-neutral-400">
+            <input
+              type="checkbox"
+              checked={remember}
+              onChange={(e) => setRemember(e.target.checked)}
+              className="accent-emerald-500"
+            />
+            Remember me on this device
           </div>
 
           {/* SUBMIT */}

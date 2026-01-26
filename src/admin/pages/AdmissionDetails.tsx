@@ -1,230 +1,276 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Eye, Trash2, Loader2, X } from "lucide-react";
+import { Eye, Trash2, Loader2, X, Pencil } from "lucide-react";
 import { supabase } from "../../lib/supabaseClient";
+import { useNavigate } from "react-router-dom";
+
+/* ---------------- TYPES ---------------- */
 
 type AdmissionForm = {
   id: string;
+  branch?: string;
+  session?: string;
   class?: string;
   student_name?: string;
   dob?: string;
   gender?: string;
+  caste?: string;
+  religion?: string;
+
   father_name?: string;
+  father_qualification?: string;
+  father_occupation?: string;
+  father_occupation_details?: string;
+  father_income?: number | null;
+
   mother_name?: string;
+  mother_qualification?: string;
+  mother_occupation?: string;
+  mother_occupation_details?: string;
+  mother_income?: number | null;
+
   mobile_number?: string;
+  contact_number?: string;
+  email?: string;
+
   present_address?: string;
-  status?: "New" | "Reviewed" | "Approved" | "Rejected";
+  permanent_address?: string;
+
+  siblings?: string;
+  guardian?: string;
+
+  photo_url?: string;
   created_at: string;
 };
 
-const STATUS_STYLES: Record<string, string> = {
-  New: "bg-neutral-700 text-neutral-200",
-  Reviewed: "bg-amber-500/10 text-amber-400 border border-amber-500/30",
-  Approved: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30",
-  Rejected: "bg-red-500/10 text-red-400 border border-red-500/30",
-};
+/* ---------------- PAGE ---------------- */
 
 export function AdmissionDetails() {
   const [admissions, setAdmissions] = useState<AdmissionForm[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedAdmission, setSelectedAdmission] =
-    useState<AdmissionForm | null>(null);
-  const [updatingStatus, setUpdatingStatus] = useState<string | null>(null);
+  const [selected, setSelected] = useState<AdmissionForm | null>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAdmissions();
   }, []);
 
   async function fetchAdmissions() {
-    try {
-      const { data } = await supabase
-        .from("admissions_form")
-        .select("*")
-        .order("created_at", { ascending: false });
+    const { data } = await supabase
+      .from("admissions_form")
+      .select("*")
+      .order("created_at", { ascending: false });
 
-      setAdmissions(data || []);
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function updateStatus(id: string, status: AdmissionForm["status"]) {
-    setUpdatingStatus(id);
-    try {
-      await supabase
-        .from("admissions_form")
-        .update({ status })
-        .eq("id", id);
-
-      setAdmissions((prev) =>
-        prev.map((a) => (a.id === id ? { ...a, status } : a))
-      );
-
-      if (selectedAdmission?.id === id) {
-        setSelectedAdmission({ ...selectedAdmission, status });
-      }
-    } catch {
-      alert("Failed to update status");
-    } finally {
-      setUpdatingStatus(null);
-    }
+    setAdmissions(data || []);
+    setLoading(false);
   }
 
   async function deleteAdmission(id: string) {
-    if (!confirm("Delete this admission?")) return;
-
+    if (!confirm("Delete this admission permanently?")) return;
     await supabase.from("admissions_form").delete().eq("id", id);
-    setAdmissions((prev) => prev.filter((a) => a.id !== id));
-    if (selectedAdmission?.id === id) setSelectedAdmission(null);
+    setAdmissions((p) => p.filter((a) => a.id !== id));
+    setSelected(null);
   }
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <Loader2 className="w-6 h-6 animate-spin text-emerald-400" />
+      <div className="flex justify-center py-24">
+        <Loader2 className="animate-spin text-emerald-400" />
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
+      <h1 className="text-3xl font-bold text-white">Admissions</h1>
 
-      {/* HEADER */}
-      <div>
-        <h1 className="text-3xl font-extrabold text-white">
-          Admissions
-        </h1>
-        <p className="text-neutral-400 text-sm mt-1">
-          Manage admission form submissions
-        </p>
-      </div>
+      {admissions.map((a) => (
+        <div
+          key={a.id}
+          className="bg-neutral-900 border border-neutral-800 rounded-2xl p-5 flex flex-col sm:flex-row sm:justify-between gap-4"
+        >
+          <div>
+            <p className="text-lg font-semibold text-white">
+              {a.student_name}
+            </p>
+            <p className="text-sm text-neutral-400">
+              Class: {a.class || "N/A"}
+            </p>
+          </div>
 
-      {/* LIST */}
-      {admissions.length === 0 ? (
-        <div className="text-center text-neutral-400 py-16">
-          No admissions submitted yet
-        </div>
-      ) : (
-        <div className="space-y-4">
-          {admissions.map((a) => (
-            <div
-              key={a.id}
-              className="
-                bg-neutral-900 border border-neutral-800
-                rounded-2xl p-5
-                flex flex-col sm:flex-row sm:items-center sm:justify-between
-                gap-4
-              "
+          <div className="flex gap-2">
+            <button
+              onClick={() => setSelected(a)}
+              className="icon-btn text-cyan-400"
             >
-              <div className="space-y-1">
-                <p className="text-lg font-semibold text-neutral-100">
-                  {a.student_name}
-                </p>
-                <p className="text-sm text-neutral-400">
-                  Class: {a.class || "N/A"}
-                </p>
-                <p className="text-sm text-neutral-500">
-                  {new Date(a.created_at).toLocaleDateString()}
-                </p>
-              </div>
+              <Eye size={16} />
+            </button>
 
-              <div className="flex items-center gap-3">
-                <span
-                  className={`px-3 py-1 rounded-full text-xs ${STATUS_STYLES[a.status || "New"]}`}
-                >
-                  {a.status || "New"}
-                </span>
+            <button
+              onClick={() => navigate(`/admin/update-admission/${a.id}`)}
+              className="icon-btn text-amber-400"
+            >
+              <Pencil size={16} />
+            </button>
 
-                <button
-                  onClick={() => setSelectedAdmission(a)}
-                  className="p-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-cyan-400"
-                >
-                  <Eye className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={() => deleteAdmission(a.id)}
-                  className="p-2 rounded-lg bg-neutral-800 hover:bg-red-500/10 text-red-400"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          ))}
+            <button
+              onClick={() => deleteAdmission(a.id)}
+              className="icon-btn text-red-400"
+            >
+              <Trash2 size={16} />
+            </button>
+          </div>
         </div>
-      )}
+      ))}
 
-      {/* MODAL */}
+      {/* ================= MODAL ================= */}
       <AnimatePresence>
-        {selectedAdmission && (
-          <>
-            <motion.div
-              className="fixed inset-0 bg-black/60 z-50"
-              onClick={() => setSelectedAdmission(null)}
-            />
-
+        {selected && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-3 sm:p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelected(null)}
+          >
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="
-                fixed inset-4 sm:inset-auto sm:left-1/2 sm:top-1/2
-                sm:-translate-x-1/2 sm:-translate-y-1/2
-                bg-neutral-900 border border-neutral-800
-                rounded-2xl max-w-xl w-full z-50
-              "
+              transition={{ type: "spring", stiffness: 260, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-4xl bg-neutral-900 border border-neutral-800 rounded-3xl shadow-2xl"
             >
-              <div className="flex justify-between items-center p-5 border-b border-neutral-800">
+              {/* HEADER */}
+              <div className="flex justify-between items-center px-5 sm:px-6 py-4 border-b border-neutral-800">
                 <h2 className="text-lg font-semibold text-white">
                   Admission Details
                 </h2>
-                <button onClick={() => setSelectedAdmission(null)}>
+                <button onClick={() => setSelected(null)}>
                   <X className="text-neutral-400" />
                 </button>
               </div>
 
-              <div className="p-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-neutral-300">
-                <p><b>Name:</b> {selectedAdmission.student_name}</p>
-                <p><b>Class:</b> {selectedAdmission.class}</p>
-                <p><b>Gender:</b> {selectedAdmission.gender || "N/A"}</p>
-                <p><b>DOB:</b> {selectedAdmission.dob || "N/A"}</p>
-                <p className="sm:col-span-2">
-                  <b>Address:</b> {selectedAdmission.present_address || "N/A"}
-                </p>
-              </div>
+              {/* BODY */}
+              <div className="px-5 sm:px-6 py-6 space-y-10 text-sm text-neutral-300 max-h-[80vh] overflow-y-auto">
+                {selected.photo_url && (
+                  <div className="flex justify-center">
+                    <img
+                      src={selected.photo_url}
+                      className="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl object-cover border border-neutral-700"
+                    />
+                  </div>
+                )}
 
-              <div className="p-5 border-t border-neutral-800 flex flex-wrap gap-2">
-                {["New", "Reviewed", "Approved", "Rejected"].map((s) => (
-                  <button
-                    key={s}
-                    disabled={updatingStatus === selectedAdmission.id}
-                    onClick={() =>
-                      updateStatus(
-                        selectedAdmission.id,
-                        s as AdmissionForm["status"]
-                      )
-                    }
-                    className={`
-                      px-4 py-2 rounded-lg text-sm
-                      ${STATUS_STYLES[s]}
-                      hover:opacity-80
-                      disabled:opacity-50
-                    `}
-                  >
-                    {updatingStatus === selectedAdmission.id ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      s
-                    )}
-                  </button>
-                ))}
+                <Section title="Basic Details">
+                  <Info label="Branch" value={selected.branch} />
+                  <Info label="Session" value={selected.session} />
+                  <Info label="Class" value={selected.class} />
+                </Section>
+
+                <Section title="Student Details">
+                  <Info label="Name" value={selected.student_name} />
+                  <Info label="DOB" value={selected.dob} />
+                  <Info label="Gender" value={selected.gender} />
+                  <Info label="Caste" value={selected.caste} />
+                  <Info label="Religion" value={selected.religion} />
+                </Section>
+
+                <Section title="Father Details">
+                  <Info label="Name" value={selected.father_name} />
+                  <Info label="Qualification" value={selected.father_qualification} />
+                  <Info label="Occupation" value={selected.father_occupation} />
+                  <Info label="Occupation Details" value={selected.father_occupation_details} />
+                  <Info label="Income" value={selected.father_income ? `₹ ${selected.father_income}` : undefined} />
+                </Section>
+
+                <Section title="Mother Details">
+                  <Info label="Name" value={selected.mother_name} />
+                  <Info label="Qualification" value={selected.mother_qualification} />
+                  <Info label="Occupation" value={selected.mother_occupation} />
+                  <Info label="Occupation Details" value={selected.mother_occupation_details} />
+                  <Info label="Income" value={selected.mother_income ? `₹ ${selected.mother_income}` : undefined} />
+                </Section>
+
+                <Section title="Contact">
+                  <Info label="Mobile" value={selected.mobile_number} />
+                  <Info label="Alternate" value={selected.contact_number} />
+                  <Info label="Email" value={selected.email} />
+                  <Info label="Guardian" value={selected.guardian} />
+                </Section>
+
+                <TextBlock title="Present Address">
+                  {selected.present_address}
+                </TextBlock>
+
+                <TextBlock title="Permanent Address">
+                  {selected.permanent_address}
+                </TextBlock>
+
+                <TextBlock title="Sibling Information">
+                  {selected.siblings || "No sibling information"}
+                </TextBlock>
               </div>
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  );
+}
+
+/* ---------------- HELPERS ---------------- */
+
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <p className="text-xs uppercase tracking-wider text-neutral-500 mb-3">
+        {title}
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function Info({
+  label,
+  value,
+}: {
+  label: string;
+  value?: string;
+}) {
+  return (
+    <p className="leading-relaxed">
+      <span className="text-neutral-500">{label}:</span>{" "}
+      <span className="text-neutral-300">{value || "N/A"}</span>
+    </p>
+  );
+}
+
+function TextBlock({
+  title,
+  children,
+}: {
+  title: string;
+  children?: string;
+}) {
+  return (
+    <div className="space-y-2">
+      <p className="text-xs uppercase tracking-wider text-neutral-500">
+        {title}
+      </p>
+      <p className="text-sm text-neutral-300 leading-relaxed leading-loose break-words">
+        {children && children.trim() !== "" ? children : "N/A"}
+      </p>
     </div>
   );
 }

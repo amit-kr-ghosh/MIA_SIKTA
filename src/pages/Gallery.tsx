@@ -27,7 +27,7 @@ const Gallery = () => {
   return (
     <div>
       {/* HERO */}
-      <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-800 text-white py-20">
+      <section className="bg-gradient-to-br from-indigo-800 via-indigo-700 to-teal-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}

@@ -63,7 +63,7 @@ const Facilities = () => {
       description:
         'GPS-enabled buses with trained staff ensuring student safety.',
       image:
-        'https://images.pexels.com/photos/5905713/pexels-photo-5905713.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        'https://images.pexels.com/photos/5896476/pexels-photo-5896476.jpeg?auto=compress&cs=tinysrgb&w=1200',
       gradient: 'from-lime-500 to-green-600',
     },
     {
@@ -90,7 +90,7 @@ const Facilities = () => {
     <div className="bg-white">
 
       {/* HERO */}
-       <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-800 text-white py-14 sm:py-20">
+       <section className="bg-gradient-to-br from-indigo-800 via-indigo-700 to-teal-600 text-white py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">
@@ -183,7 +183,7 @@ const Facilities = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <img
               loading="lazy"
-              src="https://images.pexels.com/photos/5212700/pexels-photo-5212700.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              src="https://images.pexels.com/photos/7743255/pexels-photo-7743255.jpeg?auto=compress&cs=tinysrgb&w=1200"
               alt="Smart classroom"
               className="rounded-3xl shadow-lg w-full max-h-[320px] sm:max-h-[420px] object-cover"
             />

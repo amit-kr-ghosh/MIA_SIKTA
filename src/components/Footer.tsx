@@ -4,7 +4,6 @@ import {
   Phone,
   MapPin,
   Facebook,
-  Twitter,
   Instagram,
   Youtube,
 } from "lucide-react";
@@ -19,7 +18,7 @@ const Footer = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
         {/* TOP GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center sm:text-left">
-          
+
           {/* BRAND */}
           <div className="space-y-4 flex flex-col items-center sm:items-start">
             <div className="flex items-center gap-3">
@@ -41,17 +40,40 @@ const Footer = () => {
               lifelong learning.
             </p>
 
+            {/* SOCIAL LINKS */}
             <div className="flex gap-3 pt-2 justify-center sm:justify-start">
-              {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
-                <motion.a
-                  key={i}
-                  whileHover={{ scale: 1.15, y: -2 }}
-                  href="#"
-                  className="p-2 rounded-lg bg-white/10 hover:bg-gradient-to-br hover:from-orange-400 hover:to-yellow-400 hover:text-gray-900 transition"
-                >
-                  <Icon className="h-5 w-5" />
-                </motion.a>
-              ))}
+              {/* Instagram */}
+              <motion.a
+                whileHover={{ scale: 1.15, y: -2 }}
+                href="https://www.instagram.com/mothers_bhawra_?igsh=cGpwZHVrNXAyMXBn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-white/10 hover:bg-gradient-to-br hover:from-orange-400 hover:to-yellow-400 hover:text-gray-900 transition"
+              >
+                <Instagram className="h-5 w-5" />
+              </motion.a>
+
+              {/* Facebook */}
+              <motion.a
+                whileHover={{ scale: 1.15, y: -2 }}
+                href="https://www.facebook.com/share/1ajocSzpMq/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-white/10 hover:bg-gradient-to-br hover:from-orange-400 hover:to-yellow-400 hover:text-gray-900 transition"
+              >
+                <Facebook className="h-5 w-5" />
+              </motion.a>
+
+              {/* YouTube */}
+              <motion.a
+                whileHover={{ scale: 1.15, y: -2 }}
+                href="https://youtube.com/@miasikta?si=6iRm88sf0F8RydyZ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-white/10 hover:bg-gradient-to-br hover:from-orange-400 hover:to-yellow-400 hover:text-gray-900 transition"
+              >
+                <Youtube className="h-5 w-5" />
+              </motion.a>
             </div>
           </div>
 
@@ -113,7 +135,6 @@ const Footer = () => {
                 <MapPin className="h-5 w-5 text-orange-400 mt-0.5" />
                 <span>
                   Bhawra, Sikta, West Champaran,<br /> Bihar - 845306
-            
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -126,7 +147,6 @@ const Footer = () => {
               </li>
             </ul>
 
-            {/* CTA */}
             <Link
               to="/admissions"
               className="
@@ -144,7 +164,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* DIVIDER */}
+        {/* FOOTER BOTTOM */}
         <div className="border-t border-white/10 mt-12 pt-6 text-center text-xs sm:text-sm text-gray-400">
           <p>
             © {new Date().getFullYear()} Mothers International Academy. All rights
