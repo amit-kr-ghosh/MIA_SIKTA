@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+
 import { Link } from "react-router-dom";
+
 import Contact from "./Contact.tsx";
 import Spotlight from "./Spotlight.tsx";
 import TeachersSection from "./TeachersSection.tsx";
@@ -15,6 +17,10 @@ import {
 } from "lucide-react";
 
 const Home = () => {
+
+
+
+  /* ================= FEATURES ================= */
   const features = [
     {
       icon: BookOpen,
@@ -46,20 +52,11 @@ const Home = () => {
   ];
 
   return (
-    <div className="overflow-hidden">
-      <section
-        className="
-    relative
-    min-h-[calc(100svh-200px)]
-    sm:min-h-[calc(100vh-80px)]
-    flex items-center
-    px-4 sm:px-6
-    py-6
-    overflow-hidden
-    rounded-b-[50px] sm:rounded-b-[80]px]
-    bg-gradient-to-b from-[#FFF7E8] via-white to-[#ddeff8]
-  "
-     >
+    <div className="overflow-hidden relative">
+     
+     
+      {/* ================= HERO ================= */}
+      <section className="relative min-h-[calc(100svh-200px)] sm:min-h-[calc(100vh-80px)] flex items-center px-4 sm:px-6 py-6 overflow-hidden rounded-b-[50px] sm:rounded-b-[80px] bg-gradient-to-b from-[#FFF7E8] via-white to-[#ddeff8]">
         {/* ===== MAIN CONTENT ===== */}
         <div className="relative z-10 max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-6 items-center">
           {/* LEFT (UNCHANGED) */}
@@ -163,13 +160,14 @@ const Home = () => {
         "
             >
               <video
-                className="w-full h-[220px] sm:h-[340px] lg:h-[420px] object-cover"
-                autoPlay
-                muted
-                playsInline
-                preload="metadata"
-                poster="/images/gallery/school-build2.png"
-              >
+  className="w-full h-[220px] sm:h-[340px] lg:h-[420px] object-cover"
+  autoPlay
+  muted
+  playsInline
+preload="none"
+poster="/images/gallery/school-build2.png"
+>
+
                 {/* 🔥 plays ONCE (no loop) */}
                 <source src="/videos/intro480.mp4" type="video/mp4" />
               </video>
