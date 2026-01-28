@@ -73,7 +73,7 @@ export function generateAdmissionPDF(
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
-    doc.text("CBSE +2 School", PAGE_W / 2, y + 14, { align: "center" });
+    doc.text("CBSE-affiliated School", PAGE_W / 2, y + 14, { align: "center" });
 
     doc.setFontSize(11);
     doc.text(`Admission Application Form – ${copyLabel}`, PAGE_W / 2, y + 22, {
@@ -134,7 +134,7 @@ export function generateAdmissionPDF(
     row("Occupation:", data.father_occupation, y + LH * 2);
     row(
       "Income:",
-      data.father_income ? `₹ ${data.father_income}` : "N/A",
+      data.father_income ? `Rs. ${data.father_income}` : "N/A",
       y + LH * 3
     );
     y += LH * 5;
@@ -149,7 +149,7 @@ export function generateAdmissionPDF(
     row("Occupation:", data.mother_occupation, y + LH * 2);
     row(
       "Income:",
-      data.mother_income ? `₹ ${data.mother_income}` : "N/A",
+      data.mother_income ? `Rs. ${data.mother_income}` : "N/A",
       y + LH * 3
     );
     y += LH * 5;

@@ -31,7 +31,7 @@ const LoadingScreen = ({ isLoading }: { isLoading: boolean }) => {
             transition={{ delay: 0.3 }}
             className="text-lg font-bold text-gray-800 tracking-wide"
           >
-            Mothers International Academy
+            Mother's International Academy
           </motion.h2>
 
           {/* LOADER BAR */}

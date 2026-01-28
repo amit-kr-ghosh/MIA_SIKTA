@@ -56,7 +56,7 @@ const LoadingScreen = ({ loading }: { loading: boolean }) => (
           transition={{ delay: 0.3 }}
           className="text-lg font-bold text-gray-800"
         >
-          Mothers International Academy
+          Mother's International Academy
         </motion.h2>
 
         <div className="mt-6 w-56 h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -98,15 +98,70 @@ function App() {
 
           <Routes>
             {/* ================= PUBLIC WEBSITE ================= */}
-            <Route path="/" element={<Layout><Home /></Layout>} />
-            <Route path="/about" element={<Layout><About /></Layout>} />
-            <Route path="/academics" element={<Layout><Academics /></Layout>} />
-            <Route path="/facilities" element={<Layout><Facilities /></Layout>} />
-            <Route path="/gallery" element={<Layout><Gallery /></Layout>} />
-            <Route path="/achievements" element={<Layout><Achievements /></Layout>} />
-            <Route path="/notices" element={<Layout><Notices /></Layout>} />
-            <Route path="/admissions" element={<Layout><Admissions /></Layout>} />
-
+            <Route
+              path="/"
+              element={
+                <Layout>
+                  <Home />
+                </Layout>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <Layout>
+                  <About />
+                </Layout>
+              }
+            />
+            <Route
+              path="/academics"
+              element={
+                <Layout>
+                  <Academics />
+                </Layout>
+              }
+            />
+            <Route
+              path="/facilities"
+              element={
+                <Layout>
+                  <Facilities />
+                </Layout>
+              }
+            />
+            <Route
+              path="/gallery"
+              element={
+                <Layout>
+                  <Gallery />
+                </Layout>
+              }
+            />
+            <Route
+              path="/achievements"
+              element={
+                <Layout>
+                  <Achievements />
+                </Layout>
+              }
+            />
+            <Route
+              path="/notices"
+              element={
+                <Layout>
+                  <Notices />
+                </Layout>
+              }
+            />
+            <Route
+              path="/admissions"
+              element={
+                <Layout>
+                  <Admissions />
+                </Layout>
+              }
+            />
 
             <Route
               path="/contact"
@@ -148,7 +203,10 @@ function App() {
               <Route path="notices" element={<NoticeDetails />} />
               <Route path="notices/add" element={<AddNotice />} />
               <Route path="notices/edit/:id" element={<EditNotice />} />
-               <Route path="/admin/update-admission/:id" element={<UpdateAdmissions />} />
+              <Route
+                path="/admin/update-admission/:id"
+                element={<UpdateAdmissions />}
+              />
             </Route>
           </Routes>
         </>

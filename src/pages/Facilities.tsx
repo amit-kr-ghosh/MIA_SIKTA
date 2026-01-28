@@ -36,7 +36,7 @@ const Facilities = () => {
       description:
         'High-speed internet, modern systems, and the latest educational software.',
       image:
-        'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        'https://images.pexels.com/photos/10638067/pexels-photo-10638067.jpeg?auto=compress&cs=tinysrgb&w=1200',
       gradient: 'from-sky-500 to-blue-600',
     },
     {
@@ -45,7 +45,7 @@ const Facilities = () => {
       description:
         'Indoor & outdoor sports facilities supporting fitness and teamwork.',
       image:
-        'https://images.pexels.com/photos/461049/pexels-photo-461049.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        'https://www.ngsnoida.com/storage/facilities/20251214103052.webp',
       gradient: 'from-orange-500 to-amber-500',
     },
     {
@@ -81,7 +81,7 @@ const Facilities = () => {
       description:
         'Nutritious, hygienic meals prepared with quality ingredients.',
       image:
-        'https://images.pexels.com/photos/2159065/pexels-photo-2159065.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        'https://i0.wp.com/allenhouse.ac.in/wp-content/uploads/2024/07/7K2A1560-scaled.jpg?fit=1024%2C683&ssl=1',
       gradient: 'from-yellow-400 to-orange-500',
     },
   ];
@@ -183,7 +183,7 @@ const Facilities = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <img
               loading="lazy"
-              src="https://images.pexels.com/photos/7743255/pexels-photo-7743255.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              src="https://cdn.prod.website-files.com/66da8463f581814692709dcc/68496c55bfdd043cdfad8ff7_Roombr10780%20(10).jpg"
               alt="Smart classroom"
               className="rounded-3xl shadow-lg w-full max-h-[320px] sm:max-h-[420px] object-cover"
             />

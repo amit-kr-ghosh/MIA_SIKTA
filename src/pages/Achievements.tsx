@@ -1,90 +1,95 @@
-import { motion } from 'framer-motion';
-import { Trophy, Award, Medal, Star } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Trophy, Award, Medal, Star } from "lucide-react";
 
 const Achievements = () => {
   const achievements = [
     {
-      year: '2024',
-      title: 'National Science Olympiad',
-      description: 'Gold Medal - Aarav Sharma, Class X',
+      year: "2024",
+      title: "National Science Olympiad",
+      description: "Gold Medal - Aarav Sharma, Class X",
       icon: Trophy,
-      color: 'from-yellow-400 to-yellow-500',
+      color: "from-yellow-400 to-yellow-500",
     },
     {
-      year: '2024',
-      title: 'Inter-School Debate Championship',
-      description: 'First Prize - Priya Patel, Class XII',
+      year: "2024",
+      title: "Inter-School Debate Championship",
+      description: "First Prize - Priya Patel, Class XII",
       icon: Award,
-      color: 'from-indigo-500 to-teal-500',
+      color: "from-indigo-500 to-teal-500",
     },
     {
-      year: '2023',
-      title: 'State Level Mathematics Competition',
-      description: 'Silver Medal - Rohan Verma, Class IX',
+      year: "2023",
+      title: "State Level Mathematics Competition",
+      description: "Silver Medal - Rohan Verma, Class IX",
       icon: Medal,
-      color: 'from-gray-300 to-gray-400',
+      color: "from-gray-300 to-gray-400",
     },
     {
-      year: '2023',
-      title: 'All India Painting Contest',
-      description: 'First Prize - Ananya Singh, Class VII',
+      year: "2023",
+      title: "All India Painting Contest",
+      description: "First Prize - Ananya Singh, Class VII",
       icon: Star,
-      color: 'from-pink-400 to-rose-500',
+      color: "from-pink-400 to-rose-500",
     },
     {
-      year: '2023',
-      title: 'District Cricket Championship',
-      description: 'Winners - School Cricket Team',
+      year: "2023",
+      title: "District Cricket Championship",
+      description: "Winners - School Cricket Team",
       icon: Trophy,
-      color: 'from-teal-400 to-teal-500',
+      color: "from-teal-400 to-teal-500",
     },
     {
-      year: '2022',
-      title: 'CBSE Academic Excellence',
-      description: '100% Pass Rate in Class XII Boards',
+      year: "2022",
+      title: "CBSE Academic Excellence",
+      description: "100% Pass Rate in Class XII Boards",
       icon: Award,
-      color: 'from-indigo-500 to-blue-600',
+      color: "from-indigo-500 to-blue-600",
     },
     {
-      year: '2022',
-      title: 'International Robotics Challenge',
-      description: 'Bronze Medal - Robotics Club Team',
+      year: "2022",
+      title: "International Robotics Challenge",
+      description: "Bronze Medal - Robotics Club Team",
       icon: Medal,
-      color: 'from-orange-400 to-orange-500',
+      color: "from-orange-400 to-orange-500",
     },
     {
-      year: '2022',
-      title: 'State Dance Competition',
-      description: 'Best Performance - School Dance Troupe',
+      year: "2022",
+      title: "State Dance Competition",
+      description: "Best Performance - School Dance Troupe",
       icon: Star,
-      color: 'from-yellow-400 to-amber-500',
+      color: "from-yellow-400 to-amber-500",
     },
   ];
 
   const stats = [
-    { number: '100%', label: 'Board Exam Pass Rate', color: 'bg-indigo-600' },
-    { number: '250+', label: 'Awards Won', color: 'bg-teal-600' },
-    { number: '50+', label: 'National Level Participants', color: 'bg-yellow-600' },
-    { number: '15+', label: 'Years of Excellence', color: 'bg-rose-600' },
+    { number: "100%", label: "Board Exam Pass Rate", color: "bg-indigo-600" },
+    { number: "250+", label: "Awards Won", color: "bg-teal-600" },
+    {
+      number: "50+",
+      label: "National Level Participants",
+      color: "bg-yellow-600",
+    },
+    { number: "15+", label: "Years of Excellence", color: "bg-rose-600" },
   ];
 
   return (
     <div className="bg-white">
-
       {/* ================= HERO ================= */}
-       <section className="bg-gradient-to-br from-indigo-800 via-indigo-700 to-teal-600 text-white py-14 sm:py-20">
+      <section className="bg-gradient-to-br from-indigo-800 via-indigo-700 to-teal-600 text-white py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">
               Achievements
             </h1>
             <p className="text-indigo-100 text-base sm:text-xl max-w-3xl mx-auto">
-               Celebrating excellence, dedication, and success
+              Celebrating excellence, dedication, and success
             </p>
           </motion.div>
         </div>
       </section>
-  
 
       {/* ================= STATS ================= */}
       <section className="py-12 sm:py-16">
@@ -111,7 +116,8 @@ const Achievements = () => {
               Recent Achievements
             </h2>
             <p className="text-sm sm:text-lg text-gray-600 max-w-2xl mx-auto">
-              Our students continue to shine in academics, sports, and co-curricular activities
+              Our students continue to shine in academics, sports, and
+              co-curricular activities
             </p>
           </div>
 
@@ -162,19 +168,19 @@ const Achievements = () => {
                 Building Champions
               </h2>
               <p className="text-sm sm:text-lg text-gray-600 mb-4 leading-relaxed">
-                At Mothers International Academy, we nurture talent and help students
-                achieve excellence beyond academics.
+                At Mother's International Academy, we nurture talent and help
+                students achieve excellence beyond academics.
               </p>
               <p className="text-sm sm:text-lg text-gray-600 mb-6 leading-relaxed">
-                With expert mentoring, modern facilities, and continuous encouragement,
-                our students thrive at every level.
+                With expert mentoring, modern facilities, and continuous
+                encouragement, our students thrive at every level.
               </p>
 
               <div className="space-y-3 text-sm sm:text-base">
                 {[
-                  'Expert guidance and mentorship',
-                  'Regular competitions and exhibitions',
-                  'Recognition and awards ceremonies',
+                  "Expert guidance and mentorship",
+                  "Regular competitions and exhibitions",
+                  "Recognition and awards ceremonies",
                 ].map((item, idx) => (
                   <div
                     key={idx}
@@ -189,7 +195,6 @@ const Achievements = () => {
           </div>
         </div>
       </section>
-
     </div>
   );
 };

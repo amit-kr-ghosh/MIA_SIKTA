@@ -3,12 +3,12 @@
 
   ## Overview
   This migration creates the admissions_form table for storing student admission applications
-  for Mothers International Academy.
+  for Mother's International Academy.
 
   ## New Tables
     - `admissions_form`
       - `id` (uuid, primary key) - Unique identifier for each admission
-      - `branch` (text) - School branch name (fixed: Mothers International Academy)
+      - `branch` (text) - School branch name (fixed: Mother's International Academy)
       - `session` (text) - Academic session (e.g., 2025-2026)
       - `class` (text) - Class/grade applying for
       - `student_name` (text) - Full name of the student
@@ -50,7 +50,7 @@
 
 CREATE TABLE IF NOT EXISTS admissions_form (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  branch text NOT NULL DEFAULT 'Mothers International Academy',
+  branch text NOT NULL DEFAULT 'Mother's International Academy',
   session text NOT NULL DEFAULT '2025-2026',
   class text NOT NULL,
   student_name text NOT NULL,

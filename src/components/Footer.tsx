@@ -18,7 +18,6 @@ const Footer = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
         {/* TOP GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center sm:text-left">
-
           {/* BRAND */}
           <div className="space-y-4 flex flex-col items-center sm:items-start">
             <div className="flex items-center gap-3">
@@ -30,7 +29,7 @@ const Footer = () => {
                 />
               </div>
               <h3 className="text-white text-lg sm:text-xl font-extrabold leading-tight">
-                Mothers <br className="sm:hidden" />
+                Mother's <br className="sm:hidden" />
                 International Academy
               </h3>
             </div>
@@ -45,7 +44,7 @@ const Footer = () => {
               {/* Instagram */}
               <motion.a
                 whileHover={{ scale: 1.15, y: -2 }}
-                href="https://www.instagram.com/mothers_bhawra_?igsh=cGpwZHVrNXAyMXBn"
+                href="https://www.instagram.com/Mother's_bhawra_?igsh=cGpwZHVrNXAyMXBn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-white/10 hover:bg-gradient-to-br hover:from-orange-400 hover:to-yellow-400 hover:text-gray-900 transition"
@@ -79,16 +78,14 @@ const Footer = () => {
 
           {/* QUICK LINKS */}
           <div>
-            <h4 className="text-white text-lg font-bold mb-4">
-              Quick Links
-            </h4>
+            <h4 className="text-white text-lg font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               {[
                 { name: "About Us", path: "/about" },
                 { name: "Academics", path: "/academics" },
                 { name: "Admissions", path: "/admissions" },
                 { name: "Facilities", path: "/facilities" },
-                { name: "Achievements", path: "/achievements" },
+                
               ].map((l) => (
                 <li key={l.path}>
                   <Link
@@ -104,9 +101,7 @@ const Footer = () => {
 
           {/* RESOURCES */}
           <div>
-            <h4 className="text-white text-lg font-bold mb-4">
-              Resources
-            </h4>
+            <h4 className="text-white text-lg font-bold mb-4">Resources</h4>
             <ul className="space-y-2 text-sm">
               {[
                 { name: "Gallery", path: "/gallery" },
@@ -127,14 +122,13 @@ const Footer = () => {
 
           {/* CONTACT */}
           <div className="flex flex-col items-center sm:items-start">
-            <h4 className="text-white text-lg font-bold mb-4">
-              Contact Info
-            </h4>
+            <h4 className="text-white text-lg font-bold mb-4">Contact Info</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-orange-400 mt-0.5" />
                 <span>
-                  Bhawra, Sikta, West Champaran,<br /> Bihar - 845306
+                  Bhawra, Sikta, West Champaran,
+                  <br /> Bihar - 845306
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -167,8 +161,8 @@ const Footer = () => {
         {/* FOOTER BOTTOM */}
         <div className="border-t border-white/10 mt-12 pt-6 text-center text-xs sm:text-sm text-gray-400">
           <p>
-            © {new Date().getFullYear()} Mothers International Academy. All rights
-            reserved.
+            © {new Date().getFullYear()} Mother's International Academy. All
+            rights reserved.
           </p>
           <p className="mt-1 text-gray-500">
             Designed with ❤️ for modern education

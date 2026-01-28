@@ -9,7 +9,7 @@ const Admissions = () => {
   const [showInstructions, setShowInstructions] = useState(true);
 
   const [formData, setFormData] = useState({
-    branch: "Mothers International Academy",
+    branch: "Mother's International Academy",
     session: "2025-2026",
     class: "",
     student_name: "",
@@ -181,14 +181,14 @@ const Admissions = () => {
             Application Submitted!
           </h2>
           <p className="text-gray-600 mb-6">
-            Thank you for your interest in Mothers International Academy. We
+            Thank you for your interest in Mother's International Academy. We
             have received your application and will contact you soon.
           </p>
           <button
             onClick={() => {
               setSubmitSuccess(false);
               setFormData({
-                branch: "Mothers International Academy",
+                branch: "Mother's International Academy",
                 session: "2025-2026",
                 class: "",
                 student_name: "",
@@ -244,7 +244,7 @@ const Admissions = () => {
               Admission Application Form
             </h1>
             <p className="text-xl text-blue-100">
-              Session 2025-2026 | Mothers International Academy
+              Session 2025-2026 | Mother's International Academy
             </p>
           </motion.div>
           <div className="flex justify-center my-6">
@@ -300,8 +300,8 @@ const Admissions = () => {
     outline-none
   "
                 >
-                  <option value="Mothers International Academy">
-                    Mothers International Academy
+                  <option value="Mother's International Academy">
+                    Mother's International Academy
                   </option>
                   <option value="Vatika Vihar Play School">
                     Vatika Vihar Play School

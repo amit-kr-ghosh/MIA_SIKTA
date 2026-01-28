@@ -53,8 +53,10 @@ const Academics = () => {
       </section>
 
       {/* ================= ACADEMIC STRUCTURE ================= */}
-      <section className="py-16 sm:py-20">
+    {/* ================= ACADEMIC STRUCTURE ================= */}
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-4xl font-bold text-indigo-900 mb-4">
               Academic Structure
@@ -72,20 +74,26 @@ const Academics = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="rounded-3xl shadow-xl overflow-hidden"
+                className={`
+                  rounded-3xl
+                  shadow-xl
+                  overflow-hidden
+                  bg-gradient-to-br ${level.color}
+                  p-8
+                  text-white
+                `}
               >
-                <div className={`bg-gradient-to-br ${level.color} p-8 text-white`}>
-                  <h3 className="text-2xl font-bold mb-1">{level.title}</h3>
-                  <p className="font-semibold mb-3 text-white/90">
-                    {level.grades}
-                  </p>
-                  <p className="leading-relaxed text-white/95">
-                    {level.description}
-                  </p>
-                </div>
+                <h3 className="text-2xl font-bold mb-1">{level.title}</h3>
+                <p className="font-semibold mb-3 text-white/90">
+                  {level.grades}
+                </p>
+                <p className="leading-relaxed text-white/95">
+                  {level.description}
+                </p>
               </motion.div>
             ))}
           </div>
+
         </div>
       </section>
 

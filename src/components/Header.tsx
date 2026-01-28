@@ -15,7 +15,7 @@ const Header = () => {
     { name: "Academics", path: "/academics" },
     { name: "Facilities", path: "/facilities" },
     { name: "Gallery", path: "/gallery" },
-    { name: "Achievements", path: "/achievements" },
+    
     { name: "Contact", path: "/contact" },
   ];
 
@@ -46,13 +46,13 @@ const Header = () => {
               alt="MIA Logo"
               className="h-12 w-12 sm:h-14 sm:w-14 object-contain"
             />
-            <div className="leading-tight">
+
+            <div className="leading-[1.1]">
               <h1 className="font-extrabold text-sm sm:text-base lg:text-lg bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
-                Mothers International Academy
+                <span className="block">Mother’s</span>
+                <span className="block">International Academy</span>
               </h1>
-              <p className="text-xs text-gray-600 font-medium">
-                CBSE +2 School
-              </p>
+
             </div>
           </Link>
 
@@ -72,23 +72,14 @@ const Header = () => {
               </Link>
             ))}
 
-            {/* 🔔 NOTICE BELL (DESKTOP) */}
+            {/* 🔔 NOTICE BELL */}
             <Link
               to="/notices"
               className="relative p-2 rounded-lg hover:bg-gray-100 transition"
             >
               <Bell className="w-5 h-5 text-gray-700" />
               {noticeCount > 0 && (
-                <span
-                  className="
-                    absolute -top-1 -right-1
-                    bg-red-500 text-white
-                    text-[10px] font-bold
-                    w-5 h-5 rounded-full
-                    flex items-center justify-center
-                    animate-pulse
-                  "
-                >
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
                   {noticeCount}
                 </span>
               )}
@@ -105,23 +96,15 @@ const Header = () => {
 
           {/* MOBILE ACTIONS */}
           <div className="flex items-center gap-2 lg:hidden">
-            {/* 🔔 NOTICE BELL (MOBILE – OUTSIDE HAMBURGER) */}
+
+            {/* 🔔 NOTICE BELL */}
             <Link
               to="/notices"
               className="relative p-2 rounded-lg hover:bg-gray-100"
             >
               <Bell className="w-5 h-5 text-gray-700" />
               {noticeCount > 0 && (
-                <span
-                  className="
-                    absolute -top-1 -right-1
-                    bg-red-500 text-white
-                    text-[10px] font-bold
-                    w-5 h-5 rounded-full
-                    flex items-center justify-center
-                    animate-pulse
-                  "
-                >
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
                   {noticeCount}
                 </span>
               )}
@@ -145,11 +128,7 @@ const Header = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{
-              type: "spring",
-              stiffness: 260,
-              damping: 22,
-            }}
+            transition={{ type: "spring", stiffness: 260, damping: 22 }}
             className="lg:hidden bg-white/95 backdrop-blur-xl border-t shadow-xl"
           >
             <nav className="px-5 py-6 space-y-3 text-center">

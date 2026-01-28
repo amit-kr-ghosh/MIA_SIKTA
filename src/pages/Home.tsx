@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Contact from "./Contact.tsx";
 import Spotlight from "./Spotlight.tsx";
+import TeachersSection from "./TeachersSection.tsx";
 import {
   BookOpen,
   Award,
@@ -46,55 +47,73 @@ const Home = () => {
 
   return (
     <div className="overflow-hidden">
-<section
-  className="
+      <section
+        className="
     relative
-    min-h-[calc(100svh-100px)]
+    min-h-[calc(100svh-200px)]
     sm:min-h-[calc(100vh-80px)]
     flex items-center
     px-4 sm:px-6
     py-6
     overflow-hidden
-    rounded-b-[50px] sm:rounded-b-[100px]
-    bg-gradient-to-b from-[#FFF7E8] via-white to-[#E4FFF6]
+    rounded-b-[50px] sm:rounded-b-[80]px]
+    bg-gradient-to-b from-[#FFF7E8] via-white to-[#ddeff8]
+  "
+     >
+        {/* ===== MAIN CONTENT ===== */}
+        <div className="relative z-10 max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-6 items-center">
+          {/* LEFT (UNCHANGED) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center lg:text-left space-y-4"
+          >
+            <h1
+  className="
+    font-black
+    leading-[1.05]
+    text-[clamp(1.5rem,4vw,3.25rem)]
+    text-gray-900
   "
 >
-  {/* ===== MAIN CONTENT ===== */}
-  <div className="relative z-10 max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-6 items-center">
+  Let’s Build a
+  <br className="hidden sm:block" />
+  Brighter Future at
+  <br />
+  <span
+    className="
+      bg-gradient-to-r from-orange-500 to-yellow-500
+      text-[clamp(1.6rem,4.2vw,3.5rem)]
+      text-transparent bg-clip-text
+      leading-[1.05]
+    "
+  >
+    Mother’s International Academy
+  </span>
+</h1>
 
-    {/* LEFT (UNCHANGED) */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="text-center lg:text-left space-y-4"
-    >
-      <h1 className="font-black leading-tight text-[clamp(1.7rem,4.5vw,3.75rem)] text-gray-900">
-        Let’s Build a Brighter Future at
-        <br />
-        <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-transparent bg-clip-text">
-          Mother’s International Academy
-        </span>
-      </h1>
 
-      <p className="text-gray-700 max-w-lg mx-auto lg:mx-0 text-[clamp(0.95rem,2.4vw,1.2rem)]">
-        A home for curiosity and courage. Where every child is seen.
-      </p>
+            <p className="text-gray-700 max-w-lg mx-auto lg:mx-0 text-[clamp(0.95rem,2.4vw,1.2rem)]">
+              A home for curiosity and courage. Where every child is seen.
+            </p>
 
-      <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+              {/* APPLY (UNCHANGED) */}
+              <motion.div
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 1.8, repeat: Infinity }}
+                className="relative inline-block"
+              >
+                <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-yellow-400 blur-xl opacity-50 -z-10" />
 
-        {/* APPLY (UNCHANGED) */}
-        <motion.div
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ duration: 1.8, repeat: Infinity }}
-          className="relative inline-block"
-        >
-          <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-yellow-400 blur-xl opacity-50 -z-10" />
-
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              to="/admissions"
-              className="
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    to="/admissions"
+                    className="
                 px-7 py-3
                 bg-gradient-to-r from-orange-500 to-yellow-500
                 text-white
@@ -103,38 +122,38 @@ const Home = () => {
                 shadow-lg
                 flex justify-center
               "
-            >
-              Apply Now
-            </Link>
-          </motion.div>
-        </motion.div>
+                  >
+                    Apply Now
+                  </Link>
+                </motion.div>
+              </motion.div>
 
-        <Link
-          to="/about"
-          className="
+              <Link
+                to="/about"
+                className="
             border-2 border-gray-300
             px-7 py-3 rounded-2xl
             font-semibold
             bg-white/70 backdrop-blur
           "
-        >
-          Learn More
-        </Link>
-      </div>
-    </motion.div>
+              >
+                Learn More
+              </Link>
+            </div>
+          </motion.div>
 
-    {/* RIGHT — VIDEO CARD (NEW, REPLACES GIF) */}
-    <motion.div
-      initial={{ opacity: 0, x: 40 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8 }}
-      className="relative flex justify-center"
-    >
-      {/* Glow */}
-      <div className="absolute -inset-3 bg-gradient-to-r from-orange-400 to-yellow-400 blur-2xl opacity-30 rounded-3xl" />
+          {/* RIGHT — VIDEO CARD (NEW, REPLACES GIF) */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative flex justify-center"
+          >
+            {/* Glow */}
+            <div className="absolute -inset-3 bg-gradient-to-r from-orange-400 to-yellow-400 blur-2xl opacity-30 rounded-3xl" />
 
-      <div
-        className="
+            <div
+              className="
           relative
           w-full
           rounded-3xl overflow-hidden
@@ -142,64 +161,59 @@ const Home = () => {
           shadow-2xl
           bg-white
         "
-      >
-        <video
-          className="w-full h-[220px] sm:h-[340px] lg:h-[420px] object-cover"
-          autoPlay
-          muted
-          playsInline
-          preload="metadata"
-          poster="/images/gallery/school-build2.png"
-        >
-          {/* 🔥 plays ONCE (no loop) */}
-          <source src="/videos/video.mp4" type="video/mp4" />
-        </video>
+            >
+              <video
+                className="w-full h-[220px] sm:h-[340px] lg:h-[420px] object-cover"
+                autoPlay
+                muted
+                playsInline
+                preload="metadata"
+                poster="/images/gallery/school-build2.png"
+              >
+                {/* 🔥 plays ONCE (no loop) */}
+                <source src="/videos/intro480.mp4" type="video/mp4" />
+              </video>
 
-        {/* Caption */}
-        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/50 to-transparent p-4">
-          <p className="text-white text-sm font-medium">
-            A glimpse into life at MIA
-          </p>
+              {/* Caption */}
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/50 to-transparent p-4">
+                <p className="text-white text-sm font-medium">
+                  A glimpse into life at MIA
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </div>
-    </motion.div>
-
-  </div>
-</section>
-
-
-
+      </section>
 
       {/* ⭐ WHY PARENTS CHOOSE US */}
       <section className="py-12 sm:py-20 px-4">
-  <h2 className="text-center text-3xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-10">
-    Why Parents Choose Us
-  </h2>
+        <h2 className="text-center text-3xl sm:text-4xl font-bold text-gray-900 mb-8 sm:mb-10">
+          Why Parents Choose Us
+        </h2>
 
-  <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-    {features.map((f, index) => (
-      <motion.div
-        key={index}
-        whileHover={{ scale: 1.05 }}
-        className="bg-gradient-to-br from-gray-100 to-gray-200 p-4 sm:p-8 rounded-xl sm:rounded-2xl shadow-inner hover:shadow-xl transition text-center border"
-      >
-        <div
-          className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${f.color} rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-md`}
-        >
-          <f.icon className="text-white" size={22} />
+        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+          {features.map((f, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-br from-gray-100 to-gray-200 p-4 sm:p-8 rounded-xl sm:rounded-2xl shadow-inner hover:shadow-xl transition text-center border"
+            >
+              <div
+                className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${f.color} rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-md`}
+              >
+                <f.icon className="text-white" size={22} />
+              </div>
+
+              <h3 className="text-sm sm:text-xl font-semibold text-gray-900">
+                {f.title}
+              </h3>
+              <p className="text-xs sm:text-base text-gray-700 mt-1 sm:mt-2 leading-snug sm:leading-relaxed">
+                {f.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
-
-        <h3 className="text-sm sm:text-xl font-semibold text-gray-900">
-          {f.title}
-        </h3>
-        <p className="text-xs sm:text-base text-gray-700 mt-1 sm:mt-2 leading-snug sm:leading-relaxed">
-          {f.description}
-        </p>
-      </motion.div>
-    ))}
-  </div>
-</section>
-
+      </section>
 
       {/* Spotlight */}
       <Spotlight />
@@ -246,6 +260,9 @@ const Home = () => {
         </div>
       </section>
 
+
+      {/* 👩‍🏫 TEACHERS SECTION */}
+      <TeachersSection /> 
       {/* 🎓 EDUCATION BEYOND ACADEMICS */}
       <section className="py-20 bg-white text-center px-6">
         <h2 className="text-4xl font-extrabold text-gray-900 mb-6">
