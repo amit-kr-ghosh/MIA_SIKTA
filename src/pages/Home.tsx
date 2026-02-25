@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Contact from "./Contact.tsx";
 import Spotlight from "./Spotlight.tsx";
 import TeachersSection from "./TeachersSection.tsx";
+import VideoSection from "../components/VideoSection.tsx";
 import {
   BookOpen,
   Award,
@@ -17,9 +18,6 @@ import {
 } from "lucide-react";
 
 const Home = () => {
-
-
-
   /* ================= FEATURES ================= */
   const features = [
     {
@@ -53,8 +51,6 @@ const Home = () => {
 
   return (
     <div className="overflow-hidden relative">
-     
-     
       {/* ================= HERO ================= */}
       <section className="relative min-h-[calc(100svh-200px)] sm:min-h-[calc(100vh-80px)] flex items-center px-4 sm:px-6 py-6 overflow-hidden rounded-b-[50px] sm:rounded-b-[80px] bg-gradient-to-b from-[#FFF7E8] via-white to-[#ddeff8]">
         {/* ===== MAIN CONTENT ===== */}
@@ -67,29 +63,28 @@ const Home = () => {
             className="text-center lg:text-left space-y-4"
           >
             <h1
-  className="
+              className="
     font-black
     leading-[1.05]
     text-[clamp(1.5rem,4vw,3.25rem)]
     text-gray-900
   "
->
-  Let’s Build a
-  <br className="hidden sm:block" />
-  Brighter Future at
-  <br />
-  <span
-    className="
+            >
+              Let’s Build a
+              <br className="hidden sm:block" />
+              Brighter Future at
+              <br />
+              <span
+                className="
       bg-gradient-to-r from-orange-500 to-yellow-500
       text-[clamp(1.6rem,4.2vw,3.5rem)]
       text-transparent bg-clip-text
       leading-[1.05]
     "
-  >
-    Mother’s International Academy
-  </span>
-</h1>
-
+              >
+                Mother’s International Academy
+              </span>
+            </h1>
 
             <p className="text-gray-700 max-w-lg mx-auto lg:mx-0 text-[clamp(0.95rem,2.4vw,1.2rem)]">
               A home for curiosity and courage. Where every child is seen.
@@ -139,47 +134,9 @@ const Home = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT — VIDEO CARD (NEW, REPLACES GIF) */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative flex justify-center"
-          >
-            {/* Glow */}
-            <div className="absolute -inset-3 bg-gradient-to-r from-orange-400 to-yellow-400 blur-2xl opacity-30 rounded-3xl" />
+          {/* RIGHT (VIDEO) */}
+          <VideoSection />
 
-            <div
-              className="
-          relative
-          w-full
-          rounded-3xl overflow-hidden
-          border border-white/60
-          shadow-2xl
-          bg-white
-        "
-            >
-              <video
-  className="w-full h-[220px] sm:h-[340px] lg:h-[420px] object-cover"
-  autoPlay
-  muted
-  playsInline
-preload="none"
-poster="/images/gallery/school-build2.png"
->
-
-                {/* 🔥 plays ONCE (no loop) */}
-                <source src="/videos/intro480.mp4" type="video/mp4" />
-              </video>
-
-              {/* Caption */}
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/50 to-transparent p-4">
-                <p className="text-white text-sm font-medium">
-                  A glimpse into life at MIA
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -258,9 +215,8 @@ poster="/images/gallery/school-build2.png"
         </div>
       </section>
 
-
       {/* 👩‍🏫 TEACHERS SECTION */}
-      <TeachersSection /> 
+      <TeachersSection />
       {/* 🎓 EDUCATION BEYOND ACADEMICS */}
       <section className="py-20 bg-white text-center px-6">
         <h2 className="text-4xl font-extrabold text-gray-900 mb-6">

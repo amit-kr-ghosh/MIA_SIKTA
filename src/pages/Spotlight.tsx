@@ -6,35 +6,32 @@ import LightRays from "../components/LightRays/LightRays";
 const styleIcons = [
   {
     id: 1,
-    name: "Aarav Sharma",
-    role: "National Science Olympiad – Gold Medalist",
+    name: "Ankit",
+    role: "District Topper – Hindustan Olympiad",
     description:
-      "Aarav has consistently ranked at the top in national-level science competitions, representing the school with excellence.",
-    image:
-      "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?auto=format&fit=crop&w=800&q=80",
-    achievementTitle: "Academic Excellence Award",
+      "Ankit secured the top rank in the Hindustan Olympiad at the district level, demonstrating exceptional academic excellence and dedication.",
+    image: "/images/home/achieve1.png",
+    achievementTitle: "Hindustan Olympiad – District Topper",
     gradient: "from-emerald-500 to-teal-500",
   },
   {
     id: 2,
-    name: "Meera Iyer",
-    role: "International Classical Dance Champion",
+    name: "Priya",
+    role: "Class X – 88.4%",
     description:
-      "Meera has won multiple international awards in Bharatanatyam, showcasing discipline, grace, and dedication.",
-    image:
-      "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=800&q=80",
-    achievementTitle: "Cultural Excellence Award",
+      "Priya achieved an impressive 88.4% in Class X board examinations, reflecting consistent hard work and strong academic performance.",
+    image: "/images/home/achieve2.png",
+    achievementTitle: "Board Examination Excellence",
     gradient: "from-purple-500 to-pink-500",
   },
   {
     id: 3,
-    name: "Rohan Verma",
-    role: "State-Level Cricket Captain",
+    name: "Yashraj",
+    role: "Class X – 92%",
     description:
-      "Leading with strategy and sportsmanship, Rohan captained the state team to multiple championship victories.",
-    image:
-      "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
-    achievementTitle: "Sports Leadership Award",
+      "Yashraj scored an outstanding 92% in Class X board examinations, showcasing dedication, discipline, and academic brilliance.",
+    image: "/images/home/achieve3.png",
+    achievementTitle: "Academic Excellence Award",
     gradient: "from-orange-500 to-red-500",
   },
 ];
@@ -52,10 +49,8 @@ const Spotlight: React.FC = () => {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const prevSlide = () =>
-    setCurrentIndex((p) => (p === 0 ? total - 1 : p - 1));
-  const nextSlide = () =>
-    setCurrentIndex((p) => (p === total - 1 ? 0 : p + 1));
+  const prevSlide = () => setCurrentIndex((p) => (p === 0 ? total - 1 : p - 1));
+  const nextSlide = () => setCurrentIndex((p) => (p === total - 1 ? 0 : p + 1));
 
   const getCardStyle = (index: number) => {
     const pos = index - currentIndex;
@@ -111,7 +106,6 @@ const Spotlight: React.FC = () => {
         }
       `}
     >
-      {/* LIGHT RAYS – DESKTOP ONLY */}
       {!isSmallScreen && (
         <div className="absolute inset-0 z-0 pointer-events-none">
           <LightRays
@@ -130,38 +124,20 @@ const Spotlight: React.FC = () => {
       )}
 
       <div className="relative z-10 max-w-6xl mx-auto">
-  {/* Heading */}
-<div className="relative text-center mb-14">
-  {/* subtle backdrop for readability */}
-  <div className="absolute inset-0 -z-10 flex justify-center">
-    <div className="w-[90%] sm:w-[70%] h-full bg-black/40 blur-2xl rounded-full" />
-  </div>
+        {/* Heading */}
+        <div className="relative text-center mb-14">
+          <div className="absolute inset-0 -z-10 flex justify-center">
+            <div className="w-[90%] sm:w-[70%] h-full bg-black/40 blur-2xl rounded-full" />
+          </div>
 
-  <h2
-    className="
-      text-4xl sm:text-5xl md:text-6xl
-      font-extrabold
-      text-white
-      tracking-tight
-      drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]
-    "
-  >
-    Student Spotlight
-  </h2>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+            Student Spotlight
+          </h2>
 
-  <p
-    className="
-      mt-4
-      text-sm sm:text-base
-      text-gray-300
-      tracking-wide
-      drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]
-    "
-  >
-    Celebrating Excellence & Achievement
-  </p>
-</div>
-
+          <p className="mt-4 text-sm sm:text-base text-gray-300 tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+            Celebrating Excellence & Achievement
+          </p>
+        </div>
 
         {/* Carousel */}
         <div className="relative flex items-center justify-center">
@@ -194,17 +170,14 @@ const Spotlight: React.FC = () => {
                   style={{ perspective: 1200, zIndex: style.zIndex }}
                   onClick={() => setCurrentIndex(i)}
                 >
-                  {/* Image */}
-                  <div className="relative h-52 sm:h-56 overflow-hidden">
+                  <div className="relative h-64 sm:h-72 overflow-hidden bg-black">
                     <img
                       src={icon.image}
                       alt={icon.name}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
 
-                  {/* Content */}
                   <div className="p-4 space-y-3">
                     <div>
                       <h3 className="text-lg font-semibold text-white">
