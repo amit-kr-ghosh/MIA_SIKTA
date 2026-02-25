@@ -70,7 +70,7 @@ const Home = () => {
     text-gray-900
   "
             >
-              Let’s Build a
+              Let’s Build a{" "} 
               <br className="hidden sm:block" />
               Brighter Future at
               <br />
